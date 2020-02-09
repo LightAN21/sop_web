@@ -1,0 +1,122 @@
+<!doctype html>
+
+<head>
+  <title>jtsai_st_program</title>
+  <link href="index.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body bgcolor="orange">
+
+  <div class="outerDiv" align="center">
+
+    <button id='read_data'>Read data</button>
+    <button id="download_from_url">Download</button>
+    <button id="check_data">Check data</button>
+    <p id="progress"></p>
+
+    <div class="File_list" align="left">
+      <div style="margin: 5px">
+        <h3>List</h3>
+        <table id="com_list"></table>
+      </div>
+    </div>
+
+    <div class="Stategies_list" align="left">
+
+      <div style="margin: 5px">
+        <h3>Selected: 
+          <a id="selected_com">null</a>
+          <button id="selected_com_name" onclick="get_chart()">get chart</button>
+        </h3>
+      </div>
+      <div class="sep"></div>
+
+      <div style="margin: 5px">
+        <h3>Search company</h3>
+        <input id="search_com_name" style="text-align:left; width:100px;" maxlength="10" type="text" value="">
+        <input id="submit_search" type="button" onclick="search_company()" value="Search">
+        <p></p>
+      </div>
+      <div class="sep"></div>
+
+      <div style="margin: 5px">
+        <h3>Find Company with Features:</h3>
+        <button onclick="feature_1()">feature_1 (break_up_hedge_point)</button><br>
+        <button onclick="feature_2()">feature_2 (break_down_hedge_point)</button><br>
+        <br>
+        <button onclick="feature_3()">feature_3 (hedge_of_up_fractal)</button><br>
+        <button onclick="feature_4()">feature_4 (hedge_of_down_fractal)</button><br>
+      </div>
+      <div class="sep"></div>
+
+      <div style="margin: 5px">
+        <h3>Statistics</h3>
+        <!-- <button onclick="show_pressure_to_support_list()">show_pressure_to_support_list</button><br>
+        <button onclick="show_break_up_list()">show_break_up_list</button><br> -->
+        <button onclick="show_break_up_hedge_point_list()">show_break_up_hedge_point_list</button><br>
+        <button onclick="show_break_down_hedge_point_list()">show_break_down_hedge_point_list</button><br>
+        <br>
+        <button onclick="show_hedge_of_up_fractal_list()">show_hedge_of_up_fractal_list</button><br>
+        <button onclick="show_hedge_of_down_fractal_list()">show_hedge_of_down_fractal_list</button><br>
+      </div>
+      <div class="sep"></div>
+
+      <div style="margin: 5px">
+        <h3>Strategies</h3>
+        <button onclick="strategy_01()">strategy_01</button><br>
+        <!-- <a>
+          After break up hedge point, <br>
+          find next up fractal f1, <br>
+          find previous fractal f0, <br>
+          f1 low > [(f0 low) + (hedge high)] / 2<br>
+        </a> -->
+        
+      </div>
+      <div class="sep"></div>
+
+      <!-- <div style="margin: 5px">
+        <h3>Candle Features:</h3>
+        <p>id<br>time<br>date<br>month<br>year</p>
+        <p>open<br>high<br>low<br>close<br>mid<br>height<br>volume</p>
+
+        <h3>Additional Candle Features:</h3>
+        <p>
+          Local minimum (period)<br>
+          Local maximum (period)<br>
+          Moving average (Bollinger bands)<br>
+        </p>
+      </div>
+      <div class="sep"></div> -->
+
+    </div>
+
+    <div class="Result_list" align="left">
+      <div style="margin: 5px">
+        <h3>Result Area</h3>
+        <textarea id="result_area" rows="35" cols="13"></textarea>
+        <button onclick="open_all_charts()">open all charts</button><br>
+        <div id="result"></div>
+      </div>
+      <div class="sep"></div>
+
+    </div>
+
+  </div>
+
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+
+  <script src="index.js"></script>
+  <script src="key_mouse_hook.js"></script>
+  <script src="download_from_url.js"></script>
+
+  <script src="indicators/fractal.js"></script>
+
+  <script src="freatues/pressure_to_support.js"></script>
+  <script src="freatues/break_up.js"></script>
+  <script src="freatues/break_up_hedge_point.js"></script>
+  <script src="freatues/break_down_hedge_point.js"></script>
+  <script src="freatues/hedge_of_fractals.js"></script>
+  
+  <script src="strategies/strategy_01.js"></script>
+</body>
