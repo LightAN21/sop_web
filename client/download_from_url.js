@@ -2,7 +2,7 @@
 var url_counter = 0;
 var timeoutID;
 var curr_set;
-var crumb = 'HQ5cJMNGoJ2'; // different computer will have different crumb
+var crumb = 'HQ5cJMNGoJ2'; // different computer/ip will have different crumb
 
 function download_from_url() {
     console.log('===========================================');
