@@ -18,11 +18,15 @@ var info = {
     file_name_list: [],
     company_msg: [],
     sep: sep,
+    url_crumb_path: __dirname + sep + 'server' + sep + 'url_crumb.txt',
+    url_crumb: String,
 };
 
 info.company_name_list = read_data.get_company_name_list(info.company_list_file_path);
 info.file_name_list = read_data.get_file_name_list(info.data_folder_path);
+info.url_crumb = read_data.get_url_curmb(info.url_crumb_path);
 
+console.log("URL crumb: \"" + info.url_crumb + "\"");
 console.log("seperator: \'" + sep + "\'");
 // console.log(info.company_name_list);
 // console.log(info.file_name_list);

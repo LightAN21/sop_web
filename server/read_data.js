@@ -131,8 +131,17 @@ function read_file_to_obj(folder_path, filename) {
     return new_info;
 }
 
+function get_url_curmb(file_path)
+{
+    var rl = sync_rl(file_path, 2048);
+    var line = rl.getline();
+
+    return line;
+}
+
 module.exports = {
     get_file_name_list: get_file_name_list,
     read_file_to_obj: read_file_to_obj,
     get_company_name_list: get_company_name_list,
+    get_url_curmb: get_url_curmb,
 };

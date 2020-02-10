@@ -5,10 +5,15 @@ var com_list = [];
 var com_name_set = {};
 var curr_company = 0;
 var data_is_read = 0;
+var url_crumb = "";
 
 console.log('testing...');
 
 $(document).ready(function () {
+    $.get('/get_url_crumb', function (data) {
+        url_crumb = data;
+        console.log("url_crumb: \"" + url_crumb + "\"");
+    });
     $.get('/get_company_name_list', function (data) {
         all_com_list = data;
         console.log("all_com_list:");
@@ -35,10 +40,9 @@ $(document).ready(function () {
         read_data();
     })
     $('#download_from_url').click(function () {
-        if (data_is_read)
+        var r = confirm("Do you want to download latest files(" + all_com_list.length + " files)?");
+        if (r == true)
             download_from_url();
-        else
-            progress_bar_show_msg('Download: Data is not read');
     })
     $('#check_data').click(function () {
         console.log(com);

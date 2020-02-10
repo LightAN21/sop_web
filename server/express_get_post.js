@@ -31,6 +31,11 @@ function express_get_post(app, main_dir, info){
         res.end();
     });
 
+    app.get('/get_url_crumb', function (req, res) {
+        res.send(info.url_crumb);
+        res.end();
+    });
+
     app.post('/get_file_info', function (req, res) {
         var id = req.body.companyID;
         var file_name = req.body.file_name;

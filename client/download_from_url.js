@@ -2,13 +2,14 @@
 var url_counter = 0;
 var timeoutID;
 var curr_set;
-var crumb = 'HQ5cJMNGoJ2'; // different computer/ip will have different crumb
+var crumb = ''; // different computer/ip will have different crumb
 
 function download_from_url() {
     console.log('===========================================');
     console.log('Downloading latest data...');
 
-    curr_set = com_list;
+    crumb = url_crumb;
+    curr_set = all_com_list;
     url_counter = 0;
     timeoutID = window.setInterval(download_com_data_fast, 2000);
 
