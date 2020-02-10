@@ -204,6 +204,7 @@ function Mn_com(com, n = 1, shift = 0) {
     if (n < 1)
         n = 1;
     if (shift > 0) {
+        type += '_' + shift.toString();
         end = i;
         var start_0 = end - 1;
         for (shift = shift % n; shift > 0; shift--) {
@@ -338,6 +339,7 @@ function Mxn_com(com, n = 1, shift = 0, x = 3, weekday = 5) {
     if (n < 1)
         n = 1;
     if (shift > 0) {
+        type += '_' + shift.toString();
         end = i;
         var start_0 = end - 1;
         for (shift = shift % n; shift > 0; shift--) {

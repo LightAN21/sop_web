@@ -1,8 +1,8 @@
 
 function condition_02() {
-    console.log('===========================================');
     if (curr_company == 'all') {
         clear_result_area();
+        console.log('===========================================');
         console.log('Apply condition_02 on all company.');
 
         var list = [];
