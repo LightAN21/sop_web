@@ -41,6 +41,7 @@
 
       <div style="margin: 5px">
         <h3>Condition 1: Inside block</h3>
+        Timeframe: 
         <select id="c1_type">
           <option value="M">M</option>
           <option value="Mx">Mx</option>
@@ -55,13 +56,14 @@
           <option value="W">W</option>
           <option value="day">day</option>
         </select>
-        <button onclick="">find</button><br>
+        <button onclick="condition_01()">find</button><br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Condition 2: High volume</h3>
-        <button onclick="">feature_2</button><br>
+        <h3>Condition 2: High volume(Daily)</h3>
+        Default: 2 times of average of 10 days
+        <button onclick="condition_02()">find</button><br>
         <br>
       </div>
       <div class="sep"></div>
@@ -129,11 +131,7 @@
   <script src="indicators/trend.js"></script>
   <script src="indicators/volume.js"></script>
 
-  <script src="freatues/pressure_to_support.js"></script>
-  <script src="freatues/break_up.js"></script>
-  <script src="freatues/break_up_hedge_point.js"></script>
-  <script src="freatues/break_down_hedge_point.js"></script>
-  <script src="freatues/hedge_of_fractals.js"></script>
+  <script src="freatues/condition_01.js"></script>
+  <script src="freatues/condition_02.js"></script>
   
-  <script src="strategies/strategy_01.js"></script>
 </body>

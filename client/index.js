@@ -67,6 +67,8 @@ function read_data() {
             if (count >= file_list.length) {
                 for (var i = 0; i < file_list.length; i++)
                     add_com_to_list(com_lst_table, com[i], i);
+                curr_company = "all";
+                document.getElementById('selected_com').innerHTML = 'all company';
                 console.log('Finished.');
             }
         });
@@ -146,6 +148,21 @@ function print_company_msg(company) {
 
 function update_result_area(str) {
     document.getElementById('result_area').innerHTML = str;
+}
+
+function update_result_area_from_list(list) {
+    var str = "";
+    for (var i = 0; i < list.length; i++)
+    {
+        str += list[i] + '\n';
+    }
+    document.getElementById('result_area').innerHTML = str;
+}
+
+function clear_result_area()
+{
+    document.getElementById("result_area").innerHTML = "";
+    document.getElementById("result").innerHTML = "";
 }
 
 function get_chart() {
