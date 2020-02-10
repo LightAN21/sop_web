@@ -73,7 +73,7 @@
 
       <div style="margin: 5px">
         <h3>
-          <input type="checkbox" id="c1_checkbox">
+          <input type="checkbox" id="c2_checkbox">
           Condition 2: High volume(Daily)
         </h3>
         Default: 2 times of average of 10 days
@@ -83,20 +83,22 @@
 
       <div style="margin: 5px">
         <h3>
-          <input type="checkbox" id="c1_checkbox">
           Condition 3:
         </h3>
+        <input type="checkbox" id="c3_1_checkbox">
         Gap up down candle
-        <button onclick="">feature_3_1</button><br>
+        <button onclick="condition_03_1()">find</button><br>
+
+        <input type="checkbox" id="c3_2_checkbox">
         Gap down up candle
-        <button onclick="">feature_3_2</button><br>
-        (Gap up/down: 2%)
+        <button onclick="condition_03_2()">find</button><br>
+        (Gap up/Gap down: at least 2%)
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3><input type="checkbox" id="c1_checkbox">
+        <h3><input type="checkbox" id="c4_checkbox">
           Condition 4: Large range candle</h3>
         Default: 2 times of average height of 10 days
         <button onclick="">feature_4</button><br>
@@ -105,21 +107,21 @@
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3><input type="checkbox" id="c1_checkbox">Condition 5: Double inside</h3>
+        <h3><input type="checkbox" id="c5_checkbox">Condition 5: Double inside</h3>
         <button onclick="">feature_5</button><br>
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3><input type="checkbox" id="c1_checkbox">Condition 6: Trend change</h3>
+        <h3><input type="checkbox" id="c6_checkbox">Condition 6: Trend change</h3>
         <button onclick="">feature_6</button><br>
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3><input type="checkbox" id="c1_checkbox">Condition 7: Outside block</h3>
+        <h3><input type="checkbox" id="c7_checkbox">Condition 7: Outside block</h3>
         <button onclick="">feature_7</button><br>
         <br>
       </div>
@@ -148,6 +150,7 @@
   <script src="download_from_url.js"></script>
 
   <script src="indicators/candles.js"></script>
+  <script src="indicators/candle_compare.js"></script>
   <script src="indicators/fractal.js"></script>
   <script src="indicators/tramsform_data.js"></script>
   <script src="indicators/trend.js"></script>
@@ -155,5 +158,6 @@
 
   <script src="freatues/condition_01.js"></script>
   <script src="freatues/condition_02.js"></script>
+  <script src="freatues/condition_03.js"></script>
 
 </body>
