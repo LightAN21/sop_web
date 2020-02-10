@@ -28,7 +28,7 @@ function condition_01() {
     if (curr_company == 'all') {
         clear_result_area();
         console.log('===========================================');
-        console.log('Apply condition_01 on all company.');
+        console.log('Find condition_01 in all company.');
         
         var list = [];
         var type = document.getElementById("c1_type").value;

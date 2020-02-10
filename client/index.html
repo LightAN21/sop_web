@@ -24,7 +24,7 @@
     <div class="Stategies_list" align="left">
 
       <div style="margin: 5px">
-        <h3>Selected: 
+        <h3>Selected:
           <a id="selected_com">null</a>
           <button id="selected_com_name" onclick="get_chart()">get chart</button>
         </h3>
@@ -40,8 +40,19 @@
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Condition 1: Inside block</h3>
-        Timeframe: 
+          <h3>Multiple conditions filter</h3>
+          <input type="radio" id="and" checked>and
+          <input type="radio" id="or">or
+          <button onclick="">find</button>
+      </div>
+      <div class="sep"></div>
+
+      <div style="margin: 5px">
+        <h3>
+          <input type="checkbox" id="c1_checkbox">
+          Condition 1: Inside block
+        </h3>
+        Timeframe:
         <select id="c1_type">
           <option value="M">M</option>
           <option value="Mx">Mx</option>
@@ -61,44 +72,54 @@
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Condition 2: High volume(Daily)</h3>
+        <h3>
+          <input type="checkbox" id="c1_checkbox">
+          Condition 2: High volume(Daily)
+        </h3>
         Default: 2 times of average of 10 days
         <button onclick="condition_02()">find</button><br>
+      </div>
+      <div class="sep"></div>
+
+      <div style="margin: 5px">
+        <h3>
+          <input type="checkbox" id="c1_checkbox">
+          Condition 3:
+        </h3>
+        Gap up down candle
+        <button onclick="">feature_3_1</button><br>
+        Gap down up candle
+        <button onclick="">feature_3_2</button><br>
+        (Gap up/down: 2%)
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Condition 3:
-        <br>Gap up down/Gap down up</h3>
-        <button onclick="">feature_3</button><br>
-        <br>
-      </div>
-      <div class="sep"></div>
-
-      <div style="margin: 5px">
-        <h3>Condition 4: Large range candle</h3>
+        <h3><input type="checkbox" id="c1_checkbox">
+          Condition 4: Large range candle</h3>
+        Default: 2 times of average height of 10 days
         <button onclick="">feature_4</button><br>
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Condition 5: Double inside</h3>
+        <h3><input type="checkbox" id="c1_checkbox">Condition 5: Double inside</h3>
         <button onclick="">feature_5</button><br>
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Condition 6: Trend change</h3>
+        <h3><input type="checkbox" id="c1_checkbox">Condition 6: Trend change</h3>
         <button onclick="">feature_6</button><br>
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Condition 7: Outside block</h3>
+        <h3><input type="checkbox" id="c1_checkbox">Condition 7: Outside block</h3>
         <button onclick="">feature_7</button><br>
         <br>
       </div>
@@ -126,6 +147,7 @@
   <script src="key_mouse_hook.js"></script>
   <script src="download_from_url.js"></script>
 
+  <script src="indicators/candles.js"></script>
   <script src="indicators/fractal.js"></script>
   <script src="indicators/tramsform_data.js"></script>
   <script src="indicators/trend.js"></script>
@@ -133,5 +155,5 @@
 
   <script src="freatues/condition_01.js"></script>
   <script src="freatues/condition_02.js"></script>
-  
+
 </body>

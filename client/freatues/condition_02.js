@@ -3,7 +3,7 @@ function condition_02() {
     if (curr_company == 'all') {
         clear_result_area();
         console.log('===========================================');
-        console.log('Apply condition_02 on all company.');
+        console.log('Find condition_02 in all company.');
 
         var list = [];
         for (var i = 0; i < com.length; i++)
