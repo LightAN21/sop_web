@@ -3,6 +3,18 @@
 <head>
   <title>jtsai_st_program</title>
   <link href="index.css" type="text/css" rel="stylesheet" />
+
+  <style>
+    table {
+      font-family: sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td {
+      text-align: left;
+    }
+  </style>
 </head>
 
 <body bgcolor="orange">
@@ -32,23 +44,196 @@
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Search company</h3>
-        <input id="search_com_name" style="text-align:left; width:100px;" maxlength="10" type="text" value="">
-        <input id="submit_search" type="button" onclick="search_company()" value="Search">
+        <h3>Search company
+          <input id="search_com_name" style="text-align:left; width:100px;" maxlength="10" type="text" value="">
+          <input id="submit_search" type="button" onclick="search_company()" value="Search">
+        </h3>
         <p></p>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
-          <h3>Multiple conditions filter</h3>
-          Working in progress.
-          <!-- <input type="radio" id="and" checked>and
+        <h3>Multiple conditions filter SOP:</h3>
+        <strong>Daily</strong><br>
+        c1(day),c2,c3,c4,c5(day),c6(W),c7(day)<br>
+        <strong>Weekly:</strong><br>
+        c1(W), c7(W)<br>
+        <strong>Monthly:</strong><br>
+        c1(M)/c1(Mx)/...<br>
+        <!-- <input type="radio" id="and" checked>and
           <input type="radio" id="or">or
           <button onclick="">find</button> -->
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
+        <h3>Conditions:</h3>
+
+        <table>
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c1_checkbox" checked> -->
+              C1:</td><td>Inside block
+              <select id="c1_type">
+                <option value="M">M</option>
+                <option value="Mx">Mx</option>
+                <option value="M2">M2</option>
+                <option value="M2_1">M2_shift</option>
+                <option value="M3">M3</option>
+                <option value="M3_1">M3_shift</option>
+                <option value="M4">M4</option>
+                <option value="M4_1">M4_shift</option>
+                <option value="M6">M6</option>
+                <option value="M6_1">M6_shift</option>
+                <option value="W">W</option>
+                <option value="day">day</option>
+              </select>
+            </td>
+            <td><button onclick="condition_01()">find</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c2_checkbox" checked> -->
+              C2:</td><td>volume(daily)
+            </td>
+            <td><button onclick="condition_02()">find</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c3_1_checkbox" checked> -->
+              C3_1:</td><td>Gap up down candle
+            </td>
+            <td><button onclick="condition_03_1()">find</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c3_2_checkbox" checked> -->
+              C3_2:</td><td>Gap down up candle
+            </td>
+            <td><button onclick="condition_03_2()">find</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c4_checkbox" checked> -->
+              C4:</td><td>Large range candle
+            </td>
+            <td><button onclick="condition_04()">find</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c5_checkbox" checked> -->
+              C5:</td><td>Double inside
+              <select id="c5_type">
+                <option value="M">M</option>
+                <option value="Mx">Mx</option>
+                <option value="M2">M2</option>
+                <option value="M2_1">M2_shift</option>
+                <option value="M3">M3</option>
+                <option value="M3_1">M3_shift</option>
+                <option value="M4">M4</option>
+                <option value="M4_1">M4_shift</option>
+                <option value="M6">M6</option>
+                <option value="M6_1">M6_shift</option>
+                <option value="W">W</option>
+                <option value="day">day</option>
+              </select>
+            </td>
+            <td><button onclick="condition_05()">find</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c6_checkbox" checked> -->
+              C6:</td><td>Trend change
+              <select id="c6_type">
+                <option value="W">W</option>
+                <option value="day">day</option>
+                <option value="M">M</option>
+                <option value="Mx">Mx</option>
+                <option value="M2">M2</option>
+                <option value="M2_1">M2_shift</option>
+                <option value="M3">M3</option>
+                <option value="M3_1">M3_shift</option>
+                <option value="M4">M4</option>
+                <option value="M4_1">M4_shift</option>
+                <option value="M6">M6</option>
+                <option value="M6_1">M6_shift</option>
+              </select>
+            </td>
+            <td><button onclick="condition_06()">find</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c7_checkbox" checked> -->
+              C7:</td><td>Outside block
+              <select id="c7_type">
+                <option value="day">day</option>
+                <option value="W">W</option>
+                <option value="M">M</option>
+                <option value="Mx">Mx</option>
+                <option value="M2">M2</option>
+                <option value="M2_1">M2_shift</option>
+                <option value="M3">M3</option>
+                <option value="M3_1">M3_shift</option>
+                <option value="M4">M4</option>
+                <option value="M4_1">M4_shift</option>
+                <option value="M6">M6</option>
+                <option value="M6_1">M6_shift</option>
+              </select>
+            </td>
+            <td><button onclick="condition_07()">find</button></td>
+          </tr>
+
+
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c8_checkbox"> -->
+              C8:</td><td>Double outside
+              <select id="c8_type">
+                <option value="day">day</option>
+                <option value="W">W</option>
+                <option value="M">M</option>
+                <option value="Mx">Mx</option>
+                <option value="M2">M2</option>
+                <option value="M2_1">M2_shift</option>
+                <option value="M3">M3</option>
+                <option value="M3_1">M3_shift</option>
+                <option value="M4">M4</option>
+                <option value="M4_1">M4_shift</option>
+                <option value="M6">M6</option>
+                <option value="M6_1">M6_shift</option>
+              </select>
+            </td>
+            <td><button onclick="condition_08()">find</button></td>
+          </tr>
+
+        </table>
+
+      </div>
+      <div class="sep"></div>
+
+      <div style="margin: 5px">
+        <h4>Default settings:</h4>
+        C2: 2 times of average of 10 days<br>
+        C3: Gap up/Gap down: at least 2%<br>
+        C4: 2 times of average height of 10 days<br>
+      </div>
+      <div class="sep"></div>
+
+
+
+
+
+
+
+      <!-- <div style="margin: 5px">
         <h3>
           <input type="checkbox" id="c1_checkbox">
           Condition 1: Inside block
@@ -105,9 +290,9 @@
         <button onclick="condition_04()">find</button><br>
         <br>
       </div>
-      <div class="sep"></div>
+      <div class="sep"></div> -->
 
-      <div style="margin: 5px">
+      <!-- <div style="margin: 5px">
         <h3><input type="checkbox" id="c5_checkbox">Condition 5: Double inside</h3>
         Timeframe:
         <select id="c5_type">
@@ -130,6 +315,21 @@
 
       <div style="margin: 5px">
         <h3><input type="checkbox" id="c6_checkbox">Condition 6: Trend change</h3>
+        Timeframe:
+        <select id="c6_type">
+          <option value="W">W</option>
+          <option value="day">day</option>
+          <option value="M">M</option>
+          <option value="Mx">Mx</option>
+          <option value="M2">M2</option>
+          <option value="M2_1">M2_shift</option>
+          <option value="M3">M3</option>
+          <option value="M3_1">M3_shift</option>
+          <option value="M4">M4</option>
+          <option value="M4_1">M4_shift</option>
+          <option value="M6">M6</option>
+          <option value="M6_1">M6_shift</option>
+        </select>
         <button onclick="condition_06()">find</button><br>
         <br>
       </div>
@@ -137,11 +337,45 @@
 
       <div style="margin: 5px">
         <h3><input type="checkbox" id="c7_checkbox">Condition 7: Outside block</h3>
-        Working in progress.
-        <!-- <button onclick="">feature_7</button><br> -->
-        <br>
+        Timeframe:
+        <select id="c7_type">
+          <option value="day">day</option>
+          <option value="W">W</option>
+          <option value="M">M</option>
+          <option value="Mx">Mx</option>
+          <option value="M2">M2</option>
+          <option value="M2_1">M2_shift</option>
+          <option value="M3">M3</option>
+          <option value="M3_1">M3_shift</option>
+          <option value="M4">M4</option>
+          <option value="M4_1">M4_shift</option>
+          <option value="M6">M6</option>
+          <option value="M6_1">M6_shift</option>
+        </select>
+        <button onclick="condition_07()">find</button><br>
       </div>
       <div class="sep"></div>
+
+      <div style="margin: 5px">
+        <h3><input type="checkbox" id="c8_checkbox">Condition 8: Outside block</h3>
+        Timeframe:
+        <select id="c8_type">
+          <option value="day">day</option>
+          <option value="W">W</option>
+          <option value="M">M</option>
+          <option value="Mx">Mx</option>
+          <option value="M2">M2</option>
+          <option value="M2_1">M2_shift</option>
+          <option value="M3">M3</option>
+          <option value="M3_1">M3_shift</option>
+          <option value="M4">M4</option>
+          <option value="M4_1">M4_shift</option>
+          <option value="M6">M6</option>
+          <option value="M6_1">M6_shift</option>
+        </select>
+        <button onclick="condition_08()">find</button><br>
+      </div>
+      <div class="sep"></div> -->
 
     </div>
 
@@ -180,5 +414,6 @@
   <script src="freatues/condition_05.js"></script>
   <script src="freatues/condition_06.js"></script>
   <script src="freatues/condition_07.js"></script>
+  <script src="freatues/condition_08.js"></script>
 
 </body>

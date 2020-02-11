@@ -1,11 +1,13 @@
-function has_c6(comp)
+function has_c6(comp, type = document.getElementById("c6_type").value)
 {
-    var msg = comp.day;
+    if (comp[type] == undefined)
+        add_all_time_frame(type);
 
+    var msg = comp[type];
     if (msg[0].trend == undefined)
-        get_trend(comp);
-    if (msg[0].lag_trend == 'switch up'
-        || msg[0].lag_trend == 'switch down')
+        get_trend(comp, type);
+    if ((msg[0].lag_trend == 'up' && msg[1].lag_trend == 'down')
+        || (msg[0].lag_trend == 'down' && msg[1].lag_trend == 'up'))
         return 1;
     return 0;
 }
@@ -17,10 +19,12 @@ function condition_06() {
         console.log('Find condition_06 in all company.');
 
         var list = [];
+        var type = document.getElementById("c6_type").value;
+
+        console.log("type: " + type);
         for (var i = 0; i < com.length; i++) {
-            if (has_c6(com[i])) {
+            if (has_c6(com[i], type))
                 list.push(com[i].name);
-            }
         }
         console.log(list);
         update_result_area_from_list(list);
