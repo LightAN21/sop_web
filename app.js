@@ -26,6 +26,8 @@ info.company_name_list = read_data.get_company_name_list(info.company_list_file_
 info.file_name_list = read_data.get_file_name_list(info.data_folder_path);
 info.url_crumb = read_data.get_url_curmb(info.url_crumb_path);
 
+
+
 console.log("URL crumb: \"" + info.url_crumb + "\"");
 console.log("seperator: \'" + sep + "\'");
 // console.log(info.company_name_list);
@@ -36,6 +38,12 @@ console.log("file:    " + info.file_name_list.length + " files");
 /* move file
 // fs.renameSync(folder + name, new_folder + name);
 */
+
+if (info.url_crumb == "")
+{
+    console.log("\nError: URL crumb not found.");
+    process.exit();
+}
 
 express_use(app);
 express_get_post(app, __dirname, info);
