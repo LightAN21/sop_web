@@ -41,9 +41,10 @@
 
       <div style="margin: 5px">
           <h3>Multiple conditions filter</h3>
-          <input type="radio" id="and" checked>and
+          Working in progress.
+          <!-- <input type="radio" id="and" checked>and
           <input type="radio" id="or">or
-          <button onclick="">find</button>
+          <button onclick="">find</button> -->
       </div>
       <div class="sep"></div>
 
@@ -101,28 +102,43 @@
         <h3><input type="checkbox" id="c4_checkbox">
           Condition 4: Large range candle</h3>
         Default: 2 times of average height of 10 days
-        <button onclick="">feature_4</button><br>
+        <button onclick="condition_04()">find</button><br>
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
         <h3><input type="checkbox" id="c5_checkbox">Condition 5: Double inside</h3>
-        <button onclick="">feature_5</button><br>
-        <br>
+        Timeframe:
+        <select id="c5_type">
+          <option value="M">M</option>
+          <option value="Mx">Mx</option>
+          <option value="M2">M2</option>
+          <option value="M2_1">M2_shift</option>
+          <option value="M3">M3</option>
+          <option value="M3_1">M3_shift</option>
+          <option value="M4">M4</option>
+          <option value="M4_1">M4_shift</option>
+          <option value="M6">M6</option>
+          <option value="M6_1">M6_shift</option>
+          <option value="W">W</option>
+          <option value="day">day</option>
+        </select>
+        <button onclick="condition_05()">find</button><br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
         <h3><input type="checkbox" id="c6_checkbox">Condition 6: Trend change</h3>
-        <button onclick="">feature_6</button><br>
+        <button onclick="condition_06()">find</button><br>
         <br>
       </div>
       <div class="sep"></div>
 
       <div style="margin: 5px">
         <h3><input type="checkbox" id="c7_checkbox">Condition 7: Outside block</h3>
-        <button onclick="">feature_7</button><br>
+        Working in progress.
+        <!-- <button onclick="">feature_7</button><br> -->
         <br>
       </div>
       <div class="sep"></div>
@@ -152,6 +168,7 @@
   <script src="indicators/candles.js"></script>
   <script src="indicators/candle_compare.js"></script>
   <script src="indicators/fractal.js"></script>
+  <script src="indicators/period_compare.js"></script>
   <script src="indicators/tramsform_data.js"></script>
   <script src="indicators/trend.js"></script>
   <script src="indicators/volume.js"></script>
@@ -159,5 +176,9 @@
   <script src="freatues/condition_01.js"></script>
   <script src="freatues/condition_02.js"></script>
   <script src="freatues/condition_03.js"></script>
+  <script src="freatues/condition_04.js"></script>
+  <script src="freatues/condition_05.js"></script>
+  <script src="freatues/condition_06.js"></script>
+  <script src="freatues/condition_07.js"></script>
 
 </body>

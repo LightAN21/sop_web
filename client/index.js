@@ -7,8 +7,6 @@ var curr_company = 0;
 var data_is_read = 0;
 var url_crumb = "";
 
-console.log('testing...');
-
 $(document).ready(function () {
     $.get('/get_url_crumb', function (data) {
         url_crumb = data;

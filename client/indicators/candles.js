@@ -17,3 +17,15 @@ function is_gap_down_up_candle(msg, index, percent = 0.02)
         return 1;
     return 0;
 }
+
+function average_height(msg, start_day_index, days)
+{
+    var h = 0, i;
+
+    if (start_day_index + days >= msg.length || start_day_index < 0)
+        return -1;
+    for (i = start_day_index; i < start_day_index + days; i++) {
+        h += msg[i].height;
+    }
+    return h / days;
+}

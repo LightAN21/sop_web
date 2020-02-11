@@ -1,20 +1,20 @@
-
-function has_c2(comp) {
+function has_c7(comp)
+{
     var msg = comp.day;
-    if (msg[0].volume >= 2 * average_volume(msg, 1, 10))
-        return 1;
+
+
     return 0;
 }
 
-function condition_02() {
+function condition_07() {
     if (curr_company == 'all') {
         clear_result_area();
         console.log('===========================================');
-        console.log('Find condition_02 in all company.');
+        console.log('Find condition_07 in all company.');
 
         var list = [];
         for (var i = 0; i < com.length; i++) {
-            if (has_c2(com[i])) {
+            if (has_c7(com[i])) {
                 list.push(com[i].name);
             }
         }

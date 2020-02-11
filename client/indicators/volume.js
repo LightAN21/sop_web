@@ -9,14 +9,13 @@ function latest_average_volume(com, days, start_index = 0) {
 }
 
 // days: look backward
-function average_volume(com, start_day_index, days) {
-    var d = com.day;
+function average_volume(msg, start_day_index, days) {
     var v = 0, i;
 
-    if (start_day_index + days >= d.length || start_day_index < 0)
+    if (start_day_index + days >= msg.length || start_day_index < 0)
         return -1;
     for (i = start_day_index; i < start_day_index + days; i++) {
-        v += d[i].volume;
+        v += msg[i].volume;
     }
     return v / days;
 }

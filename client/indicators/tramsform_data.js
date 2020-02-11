@@ -1,3 +1,55 @@
+function add_all_time_frame(type) {
+
+    if (type == 'M')
+        M(com);
+    else if (type == 'Mx')
+        Mx(com);
+    else if (type == 'M2')
+        Mn(com, 2);
+    else if (type == 'M2_1')
+        Mn(com, 2, 1);
+    else if (type == 'M3')
+        Mn(com, 3);
+    else if (type == 'M3_1')
+        Mn(com, 3, 1);
+    else if (type == 'M4')
+        Mn(com, 4);
+    else if (type == 'M4_1')
+        Mn(com, 4, 1);
+    else if (type == 'M6')
+        Mn(com, 6);
+    else if (type == 'M6_1')
+        Mn(com, 6, 1);
+    else if (type == 'W')
+        W(com);
+}
+
+function add_company_time_frame(com, type) {
+
+    if (type == 'M')
+        M_com(com);
+    else if (type == 'Mx')
+        Mx_com(com);
+    else if (type == 'M2')
+        Mn_com(com, 2);
+    else if (type == 'M2_1')
+        Mn_com(com, 2, 1);
+    else if (type == 'M3')
+        Mn_com(com, 3);
+    else if (type == 'M3_1')
+        Mn_com(com, 3, 1);
+    else if (type == 'M4')
+        Mn_com(com, 4);
+    else if (type == 'M4_1')
+        Mn_com(com, 4, 1);
+    else if (type == 'M6')
+        Mn_com(com, 6);
+    else if (type == 'M6_1')
+        Mn_com(com, 6, 1);
+    else if (type == 'W')
+        W_com(com);
+}
+
 function shift_to_start_at_Jan(month, n) {
     return month % n;
 }
