@@ -6,7 +6,7 @@
 
   <style>
     table {
-      font-family: sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       border-collapse: collapse;
       width: 100%;
     }
@@ -24,7 +24,7 @@
     <button id='read_data'>Read data</button>
     <button id="download_from_url">Download</button>
     <button id="check_data">Check data</button>
-    <p id="progress"></p>
+    <p id="progress" style="height: 15px;">Click "Read data" or "Download" to start.</p>
 
     <div class="File_list" align="left">
       <div style="margin: 5px">
@@ -53,13 +53,15 @@
       <div class="sep"></div>
 
       <div style="margin: 5px">
-        <h3>Multiple conditions filter SOP:</h3>
-        <strong>Daily</strong><br>
-        c1(day),c2,c3,c4,c5(day),c6(W),c7(day)<br>
-        <strong>Weekly:</strong><br>
-        c1(W), c7(W)<br>
-        <strong>Monthly:</strong><br>
-        c1(M)/c1(Mx)/...<br>
+        <h3>Multiple conditions filter SOP <button onclick="multi_condition()">find</button></h3>
+        <p>
+          <strong>Daily</strong><br>
+          c1(day),c2,c3,c4,c5(day),c6(W),c7(W)<br>
+          <strong>Weekly:</strong><br>
+          c1(W), c7(W)<br>
+          <strong>Monthly:</strong><br>
+          c1(M)/c1(Mx)/...<br>
+        </p>
         <!-- <input type="radio" id="and" checked>and
           <input type="radio" id="or">or
           <button onclick="">find</button> -->
@@ -73,8 +75,11 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c1_checkbox" checked> -->
-              C1:</td><td>Inside block
+              C1:</td>
+            <td>Inside block
               <select id="c1_type">
+                <option value="day">day</option>
+                <option value="W" selected>W</option>
                 <option value="M">M</option>
                 <option value="Mx">Mx</option>
                 <option value="M2">M2</option>
@@ -85,8 +90,6 @@
                 <option value="M4_1">M4_shift</option>
                 <option value="M6">M6</option>
                 <option value="M6_1">M6_shift</option>
-                <option value="W">W</option>
-                <option value="day">day</option>
               </select>
             </td>
             <td><button onclick="condition_01()">find</button></td>
@@ -95,7 +98,8 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c2_checkbox" checked> -->
-              C2:</td><td>volume(daily)
+              C2:</td>
+            <td>volume(daily)
             </td>
             <td><button onclick="condition_02()">find</button></td>
           </tr>
@@ -103,7 +107,8 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c3_1_checkbox" checked> -->
-              C3_1:</td><td>Gap up down candle
+              C3_1:</td>
+            <td>Gap up down candle
             </td>
             <td><button onclick="condition_03_1()">find</button></td>
           </tr>
@@ -111,7 +116,8 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c3_2_checkbox" checked> -->
-              C3_2:</td><td>Gap down up candle
+              C3_2:</td>
+            <td>Gap down up candle
             </td>
             <td><button onclick="condition_03_2()">find</button></td>
           </tr>
@@ -119,7 +125,8 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c4_checkbox" checked> -->
-              C4:</td><td>Large range candle
+              C4:</td>
+            <td>Large range candle
             </td>
             <td><button onclick="condition_04()">find</button></td>
           </tr>
@@ -127,8 +134,11 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c5_checkbox" checked> -->
-              C5:</td><td>Double inside
+              C5:</td>
+            <td>Double inside
               <select id="c5_type">
+                <option value="day" selected>day</option>
+                <option value="W">W</option>
                 <option value="M">M</option>
                 <option value="Mx">Mx</option>
                 <option value="M2">M2</option>
@@ -139,8 +149,6 @@
                 <option value="M4_1">M4_shift</option>
                 <option value="M6">M6</option>
                 <option value="M6_1">M6_shift</option>
-                <option value="W">W</option>
-                <option value="day">day</option>
               </select>
             </td>
             <td><button onclick="condition_05()">find</button></td>
@@ -149,10 +157,11 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c6_checkbox" checked> -->
-              C6:</td><td>Trend change
+              C6:</td>
+            <td>Trend change
               <select id="c6_type">
-                <option value="W">W</option>
                 <option value="day">day</option>
+                <option value="W" selected>W</option>
                 <option value="M">M</option>
                 <option value="Mx">Mx</option>
                 <option value="M2">M2</option>
@@ -171,10 +180,11 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c7_checkbox" checked> -->
-              C7:</td><td>Outside block
+              C7:</td>
+            <td>Outside block
               <select id="c7_type">
                 <option value="day">day</option>
-                <option value="W">W</option>
+                <option value="W" selected>W</option>
                 <option value="M">M</option>
                 <option value="Mx">Mx</option>
                 <option value="M2">M2</option>
@@ -195,9 +205,10 @@
           <tr>
             <td>
               <!-- <input type="checkbox" id="c8_checkbox"> -->
-              C8:</td><td>Double outside
+              C8:</td>
+            <td>Double outside
               <select id="c8_type">
-                <option value="day">day</option>
+                <option value="day" selected>day</option>
                 <option value="W">W</option>
                 <option value="M">M</option>
                 <option value="Mx">Mx</option>
@@ -381,7 +392,7 @@
 
     <div class="Result_list" align="left">
       <div style="margin: 5px">
-        <h3>Result Area</h3>
+        <h3>Result</h3>
         <textarea id="result_area" rows="35" cols="13"></textarea>
         <button onclick="open_all_charts()">open all charts</button><br>
         <div id="result"></div>
@@ -415,5 +426,6 @@
   <script src="freatues/condition_06.js"></script>
   <script src="freatues/condition_07.js"></script>
   <script src="freatues/condition_08.js"></script>
+  <script src="freatues/multi_condition.js"></script>
 
 </body>

@@ -38,7 +38,9 @@ $(document).ready(function () {
         read_data();
     })
     $('#download_from_url').click(function () {
-        var r = confirm("Do you want to download latest files(" + all_com_list.length + " files)?");
+        var str = 'Please make sure that you have a correct URL curmb.\n';
+        str += 'Do you want to download the latest data(' + all_com_list.length + ' files)?';
+        var r = confirm(str);
         if (r == true)
             download_from_url();
     })
@@ -161,6 +163,7 @@ function clear_result_area()
 {
     document.getElementById("result_area").innerHTML = "";
     document.getElementById("result").innerHTML = "";
+    progress_bar_show_msg('');
 }
 
 function get_chart() {
