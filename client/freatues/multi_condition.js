@@ -23,7 +23,7 @@ function multi_condition() {
         for (var j = 0; j < condition.length; j++) {
             if (condition[j](comp)) {
                 list.push(comp.name);
-                continue;
+                break ;
             }
         }
     }
