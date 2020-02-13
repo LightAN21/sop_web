@@ -232,13 +232,25 @@
 
       <div style="margin: 5px">
         <h4>Default settings:</h4>
-        C2: 2 times of average of 10 days<br>
-        C3: Gap up/Gap down: at least 2%<br>
-        C4: 2 times of average height of 10 days<br>
+        <p>
+          C2: 2 times of average of 10 days<br>
+          C3: Gap up/Gap down: at least 2%<br>
+          C4: 2 times of average height of 10 days<br>
+        </p>
       </div>
       <div class="sep"></div>
 
-
+      <div style="margin: 5px">
+        <h4>How to get a URL crumb?</h4>
+        <p>
+          (1) Go to Yahoo finance and find a <a href="https://finance.yahoo.com/quote/AAPL/history?p=AAPL" target="_blank">company</a>.<br>
+          (2) Find and click the "Historical Data" tab<br>
+          (3) Right click the "Download Data" button and copy the link address<br>
+          (4) URL crumb is at the end of the link address<br>
+          (5) Copy the crumb and paste to the file: server/url_crumb.txt<br>
+        </p>
+      </div>
+      <div class="sep"></div>
 
 
 
@@ -393,12 +405,13 @@
     <div class="Result_list" align="left">
       <div style="margin: 5px">
         <h3>Result</h3>
-        <textarea id="result_area" rows="35" cols="13"></textarea>
+        <textarea id="result_area" rows="50" cols="13"></textarea>
         <button onclick="open_all_charts()">open all charts</button><br>
+      </div>
+      <div class="sep">
+        <p style="height: 0px"></p>
         <div id="result"></div>
       </div>
-      <div class="sep"></div>
-
     </div>
 
   </div>

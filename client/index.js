@@ -38,6 +38,10 @@ $(document).ready(function () {
         read_data();
     })
     $('#download_from_url').click(function () {
+        if (url_crumb == 'url_curmb_null' || crumb == '' || crumb == undefined) {
+            progress_bar_show_msg('Error: URL crumb not found.');
+            return;
+        }
         var str = 'Please make sure that you have a correct URL curmb.\n';
         str += 'Do you want to download the latest data(' + all_com_list.length + ' files)?';
         var r = confirm(str);
@@ -152,15 +156,13 @@ function update_result_area(str) {
 
 function update_result_area_from_list(list) {
     var str = "";
-    for (var i = 0; i < list.length; i++)
-    {
+    for (var i = 0; i < list.length; i++) {
         str += list[i] + '\n';
     }
     document.getElementById('result_area').innerHTML = str;
 }
 
-function clear_result_area()
-{
+function clear_result_area() {
     document.getElementById("result_area").innerHTML = "";
     document.getElementById("result").innerHTML = "";
     progress_bar_show_msg('');
@@ -193,7 +195,7 @@ function open_all_charts() {
     console.log(list);
     res = document.getElementById('result');
     res.innerHTML = '';
-    for (var i = 0; i < list.length; i++){
+    for (var i = 0; i < list.length; i++) {
         add_open_chart_button(res, list[i]);
     }
 }

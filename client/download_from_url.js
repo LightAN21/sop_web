@@ -9,8 +9,6 @@ function download_from_url() {
     console.log('Downloading latest data...');
 
     crumb = url_crumb;
-    if (crumb == '' || crumb == undefined)
-        return ;
     curr_set = all_com_list;
     url_counter = 0;
     timeoutID = window.setInterval(download_com_data_fast, 2000);
