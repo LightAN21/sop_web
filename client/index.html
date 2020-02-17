@@ -56,7 +56,7 @@
         <h3>Multiple conditions filter SOP <button onclick="multi_condition()">find</button></h3>
         <p>
           <strong>Daily</strong><br>
-          c1(day),c2,c3,c4,c5(day),c6(W),c7(W)<br>
+          c1(day),c2,c3,c4,c5(day),c6(W),C7(day)<br>
           <strong>Weekly:</strong><br>
           c1(W), c7(W)<br>
           <strong>Monthly:</strong><br>
@@ -72,14 +72,38 @@
         <h3>Conditions:</h3>
 
         <table>
+
+          <tr>
+            <td>
+              <!-- <input type="checkbox" id="c0_checkbox" checked> -->
+              C0:</td>
+            <td>Trend change
+              <select id="c0_type">
+                <option value="day" selected>day</option>
+                <option value="W">W</option>
+                <option value="M">M</option>
+                <option value="Mx">Mx</option>
+                <option value="M2">M2</option>
+                <option value="M2_1">M2_shift</option>
+                <option value="M3">M3</option>
+                <option value="M3_1">M3_shift</option>
+                <option value="M4">M4</option>
+                <option value="M4_1">M4_shift</option>
+                <option value="M6">M6</option>
+                <option value="M6_1">M6_shift</option>
+              </select>
+            </td>
+            <td><button onclick="condition_00()">find</button></td>
+          </tr>
+
           <tr>
             <td>
               <!-- <input type="checkbox" id="c1_checkbox" checked> -->
               C1:</td>
             <td>Inside block
               <select id="c1_type">
-                <option value="day">day</option>
-                <option value="W" selected>W</option>
+                <option value="day" selected>day</option>
+                <option value="W">W</option>
                 <option value="M">M</option>
                 <option value="Mx">Mx</option>
                 <option value="M2">M2</option>
@@ -154,11 +178,13 @@
             <td><button onclick="condition_05()">find</button></td>
           </tr>
 
+
+
           <tr>
             <td>
               <!-- <input type="checkbox" id="c6_checkbox" checked> -->
               C6:</td>
-            <td>Trend change
+            <td>Outside block
               <select id="c6_type">
                 <option value="day">day</option>
                 <option value="W" selected>W</option>
@@ -177,37 +203,14 @@
             <td><button onclick="condition_06()">find</button></td>
           </tr>
 
+
+
           <tr>
             <td>
-              <!-- <input type="checkbox" id="c7_checkbox" checked> -->
+              <!-- <input type="checkbox" id="c7_checkbox"> -->
               C7:</td>
-            <td>Outside block
-              <select id="c7_type">
-                <option value="day">day</option>
-                <option value="W" selected>W</option>
-                <option value="M">M</option>
-                <option value="Mx">Mx</option>
-                <option value="M2">M2</option>
-                <option value="M2_1">M2_shift</option>
-                <option value="M3">M3</option>
-                <option value="M3_1">M3_shift</option>
-                <option value="M4">M4</option>
-                <option value="M4_1">M4_shift</option>
-                <option value="M6">M6</option>
-                <option value="M6_1">M6_shift</option>
-              </select>
-            </td>
-            <td><button onclick="condition_07()">find</button></td>
-          </tr>
-
-
-
-          <tr>
-            <td>
-              <!-- <input type="checkbox" id="c8_checkbox"> -->
-              C8:</td>
             <td>Double outside
-              <select id="c8_type">
+              <select id="c7_type">
                 <option value="day" selected>day</option>
                 <option value="W">W</option>
                 <option value="M">M</option>
@@ -222,7 +225,7 @@
                 <option value="M6_1">M6_shift</option>
               </select>
             </td>
-            <td><button onclick="condition_08()">find</button></td>
+            <td><button onclick="condition_07()">find</button></td>
           </tr>
 
         </table>
@@ -243,7 +246,8 @@
       <div style="margin: 5px">
         <h4>How to get a URL crumb?</h4>
         <p>
-          (1) Go to Yahoo finance and find a <a href="https://finance.yahoo.com/quote/AAPL/history?p=AAPL" target="_blank">company</a>.<br>
+          (1) Go to Yahoo finance and find a <a href="https://finance.yahoo.com/quote/AAPL/history?p=AAPL"
+            target="_blank">company</a>.<br>
           (2) Find and click the "Historical Data" tab<br>
           (3) Right click the "Download Data" button and copy the link address<br>
           (4) URL crumb is at the end of the link address<br>
@@ -405,13 +409,11 @@
     <div class="Result_list" align="left">
       <div style="margin: 5px">
         <h3>Result</h3>
-        <textarea id="result_area" rows="50" cols="13"></textarea>
+        <textarea id="result_area" rows="40" cols="13"></textarea>
         <button onclick="open_all_charts()">open all charts</button><br>
       </div>
-      <div class="sep">
-        <p style="height: 0px"></p>
-        <div id="result"></div>
-      </div>
+      <p style="height: 0px"></p>
+      <div id="result"></div>
     </div>
 
   </div>

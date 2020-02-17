@@ -1,13 +1,9 @@
-function has_c6(comp, type = document.getElementById("c6_type").value)
-{
+function has_c6(comp, type = document.getElementById("c6_type").value) {
     if (comp[type] == undefined)
         add_all_time_frame(type);
 
     var msg = comp[type];
-    if (msg[0].trend == undefined)
-        get_trend(comp, type);
-    if ((msg[0].lag_trend == 'up' && msg[1].lag_trend == 'down')
-        || (msg[0].lag_trend == 'down' && msg[1].lag_trend == 'up'))
+    if (msg[0].high > msg[1].high && msg[0].low < msg[1].low)
         return 1;
     return 0;
 }

@@ -3,7 +3,8 @@ function has_c7(comp, type = document.getElementById("c7_type").value) {
         add_all_time_frame(type);
 
     var msg = comp[type];
-    if (msg[0].high > msg[1].high && msg[0].low < msg[1].low)
+    if (msg[0].high > msg[1].high && msg[0].low < msg[1].low
+        && msg[1].high > msg[2].high && msg[1].low < msg[2].low)
         return 1;
     return 0;
 }
