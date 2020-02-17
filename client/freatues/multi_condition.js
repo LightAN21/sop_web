@@ -1,5 +1,7 @@
 
 function multi_condition() {
+    if (data_is_read == 0)
+        return ;
     var condition = [
         { check: has_c0, name: '0', is_checked: document.getElementById("c0_checkbox").checked },
         { check: has_c1, name: '1', is_checked: document.getElementById("c1_checkbox").checked },
