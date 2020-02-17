@@ -38,7 +38,7 @@ $(document).ready(function () {
         read_data();
     })
     $('#download_from_url').click(function () {
-        if (url_crumb == 'url_curmb_null' || url_crumb == '' || url_crumb == undefined) {
+        if (url_crumb == 'null' || url_crumb == '' || url_crumb == undefined) {
             progress_bar_show_msg('Error: URL crumb not found.');
             return;
         }

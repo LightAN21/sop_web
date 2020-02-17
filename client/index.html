@@ -249,167 +249,19 @@
           (1) Go to Yahoo finance and find a <a href="https://finance.yahoo.com/quote/AAPL/history?p=AAPL"
             target="_blank">company</a>.<br>
           (2) Find and click the "Historical Data" tab<br>
-          (3) Right click the "Download Data" button and copy the link address<br>
+          (3) Copy the link address of the "Download Data" button<br>
           (4) URL crumb is at the end of the link address<br>
-          (5) Copy the crumb and paste to the file: server/url_crumb.txt<br>
+          (5) Copy the crumb and replace the curmb in the file: server/url_crumb.txt<br>
         </p>
       </div>
       <div class="sep"></div>
-
-
-
-
-
-      <!-- <div style="margin: 5px">
-        <h3>
-          <input type="checkbox" id="c1_checkbox">
-          Condition 1: Inside block
-        </h3>
-        Timeframe:
-        <select id="c1_type">
-          <option value="M">M</option>
-          <option value="Mx">Mx</option>
-          <option value="M2">M2</option>
-          <option value="M2_1">M2_shift</option>
-          <option value="M3">M3</option>
-          <option value="M3_1">M3_shift</option>
-          <option value="M4">M4</option>
-          <option value="M4_1">M4_shift</option>
-          <option value="M6">M6</option>
-          <option value="M6_1">M6_shift</option>
-          <option value="W">W</option>
-          <option value="day">day</option>
-        </select>
-        <button onclick="condition_01()">find</button><br>
-      </div>
-      <div class="sep"></div>
-
-      <div style="margin: 5px">
-        <h3>
-          <input type="checkbox" id="c2_checkbox">
-          Condition 2: High volume(Daily)
-        </h3>
-        Default: 2 times of average of 10 days
-        <button onclick="condition_02()">find</button><br>
-      </div>
-      <div class="sep"></div>
-
-      <div style="margin: 5px">
-        <h3>
-          Condition 3:
-        </h3>
-        <input type="checkbox" id="c3_1_checkbox">
-        Gap up down candle
-        <button onclick="condition_03_1()">find</button><br>
-
-        <input type="checkbox" id="c3_2_checkbox">
-        Gap down up candle
-        <button onclick="condition_03_2()">find</button><br>
-        (Gap up/Gap down: at least 2%)
-        <br>
-      </div>
-      <div class="sep"></div>
-
-      <div style="margin: 5px">
-        <h3><input type="checkbox" id="c4_checkbox">
-          Condition 4: Large range candle</h3>
-        Default: 2 times of average height of 10 days
-        <button onclick="condition_04()">find</button><br>
-        <br>
-      </div>
-      <div class="sep"></div> -->
-
-      <!-- <div style="margin: 5px">
-        <h3><input type="checkbox" id="c5_checkbox">Condition 5: Double inside</h3>
-        Timeframe:
-        <select id="c5_type">
-          <option value="M">M</option>
-          <option value="Mx">Mx</option>
-          <option value="M2">M2</option>
-          <option value="M2_1">M2_shift</option>
-          <option value="M3">M3</option>
-          <option value="M3_1">M3_shift</option>
-          <option value="M4">M4</option>
-          <option value="M4_1">M4_shift</option>
-          <option value="M6">M6</option>
-          <option value="M6_1">M6_shift</option>
-          <option value="W">W</option>
-          <option value="day">day</option>
-        </select>
-        <button onclick="condition_05()">find</button><br>
-      </div>
-      <div class="sep"></div>
-
-      <div style="margin: 5px">
-        <h3><input type="checkbox" id="c6_checkbox">Condition 6: Trend change</h3>
-        Timeframe:
-        <select id="c6_type">
-          <option value="W">W</option>
-          <option value="day">day</option>
-          <option value="M">M</option>
-          <option value="Mx">Mx</option>
-          <option value="M2">M2</option>
-          <option value="M2_1">M2_shift</option>
-          <option value="M3">M3</option>
-          <option value="M3_1">M3_shift</option>
-          <option value="M4">M4</option>
-          <option value="M4_1">M4_shift</option>
-          <option value="M6">M6</option>
-          <option value="M6_1">M6_shift</option>
-        </select>
-        <button onclick="condition_06()">find</button><br>
-        <br>
-      </div>
-      <div class="sep"></div>
-
-      <div style="margin: 5px">
-        <h3><input type="checkbox" id="c7_checkbox">Condition 7: Outside block</h3>
-        Timeframe:
-        <select id="c7_type">
-          <option value="day">day</option>
-          <option value="W">W</option>
-          <option value="M">M</option>
-          <option value="Mx">Mx</option>
-          <option value="M2">M2</option>
-          <option value="M2_1">M2_shift</option>
-          <option value="M3">M3</option>
-          <option value="M3_1">M3_shift</option>
-          <option value="M4">M4</option>
-          <option value="M4_1">M4_shift</option>
-          <option value="M6">M6</option>
-          <option value="M6_1">M6_shift</option>
-        </select>
-        <button onclick="condition_07()">find</button><br>
-      </div>
-      <div class="sep"></div>
-
-      <div style="margin: 5px">
-        <h3><input type="checkbox" id="c8_checkbox">Condition 8: Outside block</h3>
-        Timeframe:
-        <select id="c8_type">
-          <option value="day">day</option>
-          <option value="W">W</option>
-          <option value="M">M</option>
-          <option value="Mx">Mx</option>
-          <option value="M2">M2</option>
-          <option value="M2_1">M2_shift</option>
-          <option value="M3">M3</option>
-          <option value="M3_1">M3_shift</option>
-          <option value="M4">M4</option>
-          <option value="M4_1">M4_shift</option>
-          <option value="M6">M6</option>
-          <option value="M6_1">M6_shift</option>
-        </select>
-        <button onclick="condition_08()">find</button><br>
-      </div>
-      <div class="sep"></div> -->
 
     </div>
 
     <div class="Result_list" align="left">
       <div style="margin: 5px">
         <h3>Result</h3>
-        <textarea id="result_area" rows="40" cols="13"></textarea>
+        <textarea id="result_area" rows="40" cols="20"></textarea>
         <button onclick="open_all_charts()">open all charts</button><br>
       </div>
       <p style="height: 0px"></p>
