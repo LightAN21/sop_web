@@ -28,11 +28,21 @@ function multi_condition() {
                     list.push({
                         name: comp.name,
                         with_c: [],
+                        str: '',
                     });
                 list[list.length - 1].with_c.push(condition[j].name);
+                list[list.length - 1].str += j;
             }
         }
     }
+    list.sort(function(a, b){
+        if (a.with_c.length != b.with_c.length)
+            return b.with_c.length - a.with_c.length;
+        else if (a.str < b.str)
+            return -1;
+        else
+            return 1;
+    });
     console.log(list);
 
     var res = '';
