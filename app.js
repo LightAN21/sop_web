@@ -9,8 +9,10 @@ var app = express();
 var sep = get_seperator();
 
 var data_folder_name = 'data';
+var list_folder_name = 'lists';
 
 var info = {
+    list_folder_path: __dirname + sep + list_folder_name,
     data_folder_path: __dirname + sep + data_folder_name,
     company_list_file_path: __dirname + sep + 'server' + sep + 'company_list.csv',
     company_name_list: [],
@@ -19,12 +21,13 @@ var info = {
     sep: sep,
     url_crumb_path: __dirname + sep + 'server' + sep + 'url_crumb.txt',
     url_crumb: String,
+    lists: [],
 };
 
 info.company_name_list = read_data.get_company_name_list(info.company_list_file_path);
 info.file_name_list = read_data.get_file_name_list(info.data_folder_path);
 info.url_crumb = read_data.get_url_curmb(info.url_crumb_path);
-
+info.lists = read_data.get_file_name_list(info.list_folder_path);
 
 
 console.log("URL crumb: \"" + info.url_crumb + "\"");
@@ -33,6 +36,9 @@ console.log("seperator: \'" + sep + "\'");
 // console.log(info.file_name_list);
 console.log("company: " + info.company_name_list.length + " companies");
 console.log("file:    " + info.file_name_list.length + " files");
+console.log("lists:");
+console.log(info.lists);
+
 
 /* move file
 // fs.renameSync(folder + name, new_folder + name);
