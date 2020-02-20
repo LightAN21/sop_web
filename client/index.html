@@ -39,6 +39,7 @@
         <h3>Selected:
           <a id="selected_com">null</a>
           <button id="selected_com_name" onclick="get_chart()">get chart</button>
+          <button id="selected_all_com" onclick="select_all_company()">select all</button>
         </h3>
       </div>
       <div class="sep"></div>
@@ -56,7 +57,7 @@
         <h3>Multiple conditions filter SOP <button onclick="multi_condition()">find</button></h3>
         <p>
           <strong>Daily</strong><br>
-          c1(day),c2,c3,c4,c5(day),c6(W),C7(day)<br>
+          c1(day),c2,c3,c4,c5(day),c6(W),c7(day)<br>
           <strong>Weekly:</strong><br>
           c1(W), c7(W)<br>
           <strong>Monthly:</strong><br>
@@ -261,7 +262,7 @@
     <div class="Result_list" align="left">
       <div style="margin: 5px">
         <h3>Result</h3>
-        <textarea id="result_area" rows="40" cols="20"></textarea>
+        <textarea id="result_area" rows="40" cols="25"></textarea>
         <button onclick="open_all_charts()">open all charts</button><br>
       </div>
       <p style="height: 0px"></p>

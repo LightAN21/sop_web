@@ -1,3 +1,4 @@
+var list_info = [];
 var all_com_list = [];
 var file_list = [];
 var com = [];
@@ -16,6 +17,11 @@ $(document).ready(function () {
         all_com_list = data;
         console.log("all_com_list:");
         console.log(all_com_list);
+    });
+    $.get('/get_list_info', function (data) {
+        list_info = data;
+        console.log("list_info:");
+        console.log(list_info);
     });
     $.get('/get_file_name_list', function (data) {
         file_list = data;
@@ -60,7 +66,7 @@ function read_data() {
     console.log("Reading data...");
     info = [];
     com_lst_table.innerHTML = "";
-    add_button_all_com(com_lst_table);
+    // add_button_all_com(com_lst_table);
 
     var count = 0;
     for (var i = 0; i < file_list.length; i++) {
@@ -103,6 +109,15 @@ function add_button_all_com(table) {
         progress_bar_show_msg('Select: all company');
         document.getElementById('selected_com').innerHTML = 'all company';
     }
+}
+
+function select_all_company() {
+    if (!data_is_read)
+        return ;
+    curr_company = "all";
+    console.log('===========================================');
+    progress_bar_show_msg('Select: all company');
+    document.getElementById('selected_com').innerHTML = 'all company';
 }
 
 function add_com_to_list(table, company, count) {
