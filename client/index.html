@@ -52,7 +52,11 @@
           <select id="select_list_to_move"></select>
           <button id="move_to_another_list" onclick="move_to_another_list()">move</button>
           <br>
-          Delete the data of the company
+          Add company to main list
+          <input id="add_com_name" style="text-align:left; width:80px;" maxlength="10" type="text" value="">
+          <button id="add_company" onclick="add_company()">add</button>
+          <br>
+          Delete the data of the company(move to bad_list)
           <button id="delete_company" onclick="delete_company()">delete</button>
         </p>
       </div>
@@ -71,13 +75,11 @@
         <h3>Multiple conditions filter SOP</h3>
         <p>
           Use the filter on the list
-          <select id="select_list_for_filter">
-
-          </select>
+          <select id="select_list_for_filter"></select>
           <button onclick="multi_condition()">find</button>
         </p>
         <p>
-          <strong>Daily</strong><br>
+          <strong>Daily:</strong><br>
           c1(day),c2,c3,c4,c5(day),c6(W),c7(day)<br>
           <strong>Weekly:</strong><br>
           c1(W), c6(W)<br>
@@ -249,7 +251,7 @@
       </div>
       <div class="sep"></div>
 
-      <div style="margin: 5px">
+      <!-- <div style="margin: 5px">
         <h4>Default settings:</h4>
         <p>
           C2: 2 times of average of 10 days<br>
@@ -257,7 +259,7 @@
           C4: 2 times of average height of 10 days<br>
         </p>
       </div>
-      <div class="sep"></div>
+      <div class="sep"></div> -->
 
       <div style="margin: 5px">
         <h4>How to get a URL crumb?</h4>

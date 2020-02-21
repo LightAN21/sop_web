@@ -18,10 +18,11 @@ function multi_condition() {
     console.log('===========================================');
     console.log('Using multi condition for all company.');
 
+    var curr_com_lst = get_selected_com_list();
     var list = [];
 
-    for (var i = 0; i < com.length; i++) {
-        var comp = com[i];
+    for (var i = 0; i < curr_com_lst.length; i++) {
+        var comp = curr_com_lst[i];
         for (var j = 0; j < condition.length; j++) {
             if (condition[j].is_checked && condition[j].check(comp)) {
                 if (list.length == 0 || list[list.length - 1].name != comp.name)
