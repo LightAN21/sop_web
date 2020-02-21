@@ -13,7 +13,7 @@ body {
     background-color: #EEE8AA;
     color: #000;
     height: 100%;
-    width: 15%;
+    width: 17%;
     float: left;
     border: 5px solid #555555;
 }
@@ -22,7 +22,7 @@ body {
     background-color: #EEE8AA;
     color: #000;
     height: 100%;
-    width: 55%;
+    width: 53%;
     float: left;
     border: 5px solid #555555;
 }
@@ -30,9 +30,9 @@ body {
 .Result_list {
     background-color: #EEE8AA;
     color: #000;
-    height: 780px;
-    width: 25%;
-    float: right;
+    height: 100%;
+    width: 26%;
+    float: left;
     border: 5px solid #555555;
 }
 

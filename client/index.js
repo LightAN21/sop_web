@@ -22,6 +22,16 @@ $(document).ready(function () {
         list_info = data;
         console.log("list_info:");
         console.log(list_info);
+
+        // add list selection
+        if (list_info.length == 0)
+            return ;
+        var select_show = document.getElementById("select_list_to_show");
+        var select_move = document.getElementById("select_list_to_move");
+        var select_find = document.getElementById("select_list_for_filter");
+        add_list_selection(select_show, list_info, 1);
+        add_list_selection(select_move, list_info);
+        add_list_selection(select_find, list_info);
     });
     $.get('/get_file_name_list', function (data) {
         file_list = data;
@@ -112,9 +122,10 @@ function add_button_all_com(table) {
 }
 
 function select_all_company() {
+    curr_company = '';
     if (!data_is_read)
         return ;
-    curr_company = "all";
+    curr_company = 'all';
     console.log('===========================================');
     progress_bar_show_msg('Select: all company');
     document.getElementById('selected_com').innerHTML = 'all company';
@@ -224,4 +235,19 @@ function add_open_chart_button(res, com_name) {
     b.innerHTML = com_name;
     res.appendChild(b);
     res.appendChild(document.createElement('br'));
+}
+
+function add_list_selection(select_obj, list_info, show_all = 0)
+{
+    for (var i = 0; i < list_info.length; i++)
+    {
+        if (list_info[i].name.split('.')[0] == 'bad_list' && show_all == 0)
+            continue ;
+        var op = document.createElement('option');
+        op.value = list_info[i].name;
+        op.innerHTML = list_info[i].name;
+        if (list_info[i].name.split('.')[0] == 'list')
+            op.selected = 1;
+        select_obj.appendChild(op);
+    }
 }

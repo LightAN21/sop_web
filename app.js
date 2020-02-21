@@ -34,8 +34,7 @@ for (var i = 0; i < info.list_file_names.length; i++)
     var com_list_file_path = __dirname + sep + list_folder_name + sep + info.list_file_names[i];
     var com_list = read_data.get_company_name_list(com_list_file_path);
     info.list_info.push({
-        name: info.list_file_names[i].split('.')[0],
-        file_name: info.list_file_names[i],
+        name: info.list_file_names[i],
         company_list: com_list,
     });
 }
