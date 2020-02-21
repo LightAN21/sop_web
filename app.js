@@ -47,8 +47,8 @@ console.log("company: " + info.company_name_list.length + " companies");
 console.log("file:    " + info.file_name_list.length + " files");
 console.log("list files:");
 console.log(info.list_file_names);
-console.log("list info:");
-console.log(info.list_info);
+// console.log("list info:");
+// console.log(info.list_info);
 
 
 /* move file

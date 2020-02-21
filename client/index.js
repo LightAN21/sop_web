@@ -6,6 +6,7 @@ var com_list = [];
 var com_name_set = {};
 var curr_company = 0;
 var data_is_read = 0;
+var reading_data_in_process = 0;
 var url_crumb = "";
 
 $(document).ready(function () {
@@ -32,6 +33,7 @@ $(document).ready(function () {
         add_list_selection(select_show, list_info, 1);
         add_list_selection(select_move, list_info);
         add_list_selection(select_find, list_info);
+        show_list();
     });
     $.get('/get_file_name_list', function (data) {
         file_list = data;
@@ -47,10 +49,16 @@ $(document).ready(function () {
     });
     $('#read_data').click(function () {
         if (data_is_read) {
-            console.log("Data already read.");
+            progress_bar_show_msg('Data has already been read.');
             return;
         }
-        data_is_read = 1;
+        else if (reading_data_in_process == 1) {
+            return ;
+        }
+        else if (file_list.length == 0) {
+            progress_bar_show_msg('Error: Server is not running / No files');
+            return ;
+        }
         read_data();
     })
     $('#download_from_url').click(function () {
@@ -70,26 +78,29 @@ $(document).ready(function () {
 });
 
 function read_data() {
-    var com_lst_table = document.getElementById('com_list');
-
+    
     console.log('===========================================');
     console.log("Reading data...");
-    info = [];
-    com_lst_table.innerHTML = "";
+    // var com_lst_table = document.getElementById('com_list');
+    // com_lst_table.innerHTML = '';
     // add_button_all_com(com_lst_table);
 
+    com = [];
     var count = 0;
+    reading_data_in_process = 1;
     for (var i = 0; i < file_list.length; i++) {
         $.post('/get_file_info', { companyID: i, file_name: file_list[i] }, function (data) {
             com[data.id] = data;
             count++;
             progress_bar(count, file_list.length);
             if (count >= file_list.length) {
-                for (var i = 0; i < file_list.length; i++)
-                    add_com_to_list(com_lst_table, com[i], i);
+                // for (var i = 0; i < file_list.length; i++)
+                //     add_com_to_list(com_lst_table, com[i], i);
                 curr_company = "all";
                 document.getElementById('selected_com').innerHTML = 'all company';
                 console.log('Finished.');
+                data_is_read = 1;
+                reading_data_in_process = 0;
             }
         });
     }
@@ -237,6 +248,8 @@ function add_open_chart_button(res, com_name) {
     res.appendChild(document.createElement('br'));
 }
 
+// lists
+
 function add_list_selection(select_obj, list_info, show_all = 0)
 {
     for (var i = 0; i < list_info.length; i++)
@@ -244,10 +257,26 @@ function add_list_selection(select_obj, list_info, show_all = 0)
         if (list_info[i].name.split('.')[0] == 'bad_list' && show_all == 0)
             continue ;
         var op = document.createElement('option');
-        op.value = list_info[i].name;
+        op.value = i;
         op.innerHTML = list_info[i].name;
         if (list_info[i].name.split('.')[0] == 'list')
             op.selected = 1;
         select_obj.appendChild(op);
     }
+}
+
+function show_list()
+{
+    var v = document.getElementById('select_list_to_show').value;
+    if (list_info[parseInt(v)] == undefined)
+        return ;
+    var lst = list_info[parseInt(v)].company_list;
+    var list_box = document.getElementById('list_area');
+    var str = '';
+
+    for (var i = 0; i < lst.length; i++)
+    {
+        str += lst[i] + '\n';
+    }
+    list_box.innerHTML = str;
 }
