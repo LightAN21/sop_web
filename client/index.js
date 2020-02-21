@@ -1,9 +1,9 @@
 var list_info = [];
-var all_com_list = [];
-var file_list = [];
+var all_com_list = []; // main list (lists/list.csv)
 var com = [];
-var com_list = [];
-var com_name_set = {};
+var file_list = [];
+var file_com_list = [];
+var file_com_name_set = {};
 var curr_company = 0;
 var data_is_read = 0;
 var reading_data_in_process = 0;
@@ -14,11 +14,6 @@ $(document).ready(function () {
         url_crumb = data;
         console.log("url_crumb: \"" + url_crumb + "\"");
     });
-    $.get('/get_company_name_list', function (data) {
-        all_com_list = data;
-        console.log("all_com_list:");
-        console.log(all_com_list);
-    });
     $.get('/get_list_info', function (data) {
         list_info = data;
         console.log("list_info:");
@@ -26,7 +21,7 @@ $(document).ready(function () {
 
         // add list selection
         if (list_info.length == 0)
-            return ;
+            return;
         var select_show = document.getElementById("select_list_to_show");
         var select_move = document.getElementById("select_list_to_move");
         var select_find = document.getElementById("select_list_for_filter");
@@ -35,17 +30,22 @@ $(document).ready(function () {
         add_list_selection(select_find, list_info);
         show_list();
     });
+    $.get('/get_company_name_list', function (data) {
+        all_com_list = data;
+        console.log("all_com_list(list.csv):");
+        console.log(all_com_list);
+    });
     $.get('/get_file_name_list', function (data) {
         file_list = data;
         for (var i = 0; i < file_list.length; i++)
-            com_list.push(file_list[i].split('.')[0]);
+            file_com_list.push(file_list[i].split('.')[0]);
+        for (var i = 0; i < file_list.length; i++)
+            file_com_name_set[file_com_list[i]] = i;
         com = new Array(file_list.length);
-        for (var i = 0; i < com_list.length; i++)
-            com_name_set[com_list[i]] = i;
         console.log("file_list:");
         console.log(file_list);
-        console.log("com_list:");
-        console.log(com_list);
+        console.log("file_com_list:");
+        console.log(file_com_list);
     });
     $('#read_data').click(function () {
         if (data_is_read) {
@@ -53,17 +53,21 @@ $(document).ready(function () {
             return;
         }
         else if (reading_data_in_process == 1) {
-            return ;
+            return;
         }
         else if (file_list.length == 0) {
-            progress_bar_show_msg('Error: Server is not running / No files');
-            return ;
+            progress_bar_show_msg('Error: No files');
+            return;
         }
         read_data();
     })
     $('#download_from_url').click(function () {
         if (url_crumb == 'null' || url_crumb == '' || url_crumb == undefined) {
             progress_bar_show_msg('Error: URL crumb not found.');
+            return;
+        }
+        else if (list_info.length == 0) {
+            progress_bar_show_msg('Error: Server is not running / No list files');
             return;
         }
         var str = 'Please make sure that you have a correct URL curmb.\n';
@@ -78,7 +82,7 @@ $(document).ready(function () {
 });
 
 function read_data() {
-    
+
     console.log('===========================================');
     console.log("Reading data...");
     // var com_lst_table = document.getElementById('com_list');
@@ -135,7 +139,7 @@ function add_button_all_com(table) {
 function select_all_company() {
     curr_company = '';
     if (!data_is_read)
-        return ;
+        return;
     curr_company = 'all';
     console.log('===========================================');
     progress_bar_show_msg('Select: all company');
@@ -250,12 +254,10 @@ function add_open_chart_button(res, com_name) {
 
 // lists
 
-function add_list_selection(select_obj, list_info, show_all = 0)
-{
-    for (var i = 0; i < list_info.length; i++)
-    {
+function add_list_selection(select_obj, list_info, show_all = 0) {
+    for (var i = 0; i < list_info.length; i++) {
         if (list_info[i].name.split('.')[0] == 'bad_list' && show_all == 0)
-            continue ;
+            continue;
         var op = document.createElement('option');
         op.value = i;
         op.innerHTML = list_info[i].name;
@@ -265,17 +267,15 @@ function add_list_selection(select_obj, list_info, show_all = 0)
     }
 }
 
-function show_list()
-{
+function show_list() {
     var v = document.getElementById('select_list_to_show').value;
     if (list_info[parseInt(v)] == undefined)
-        return ;
+        return;
     var lst = list_info[parseInt(v)].company_list;
     var list_box = document.getElementById('list_area');
     var str = '';
 
-    for (var i = 0; i < lst.length; i++)
-    {
+    for (var i = 0; i < lst.length; i++) {
         str += lst[i] + '\n';
     }
     list_box.innerHTML = str;
