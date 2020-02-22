@@ -202,6 +202,7 @@ function add_com_to_list(table, company, count) {
 
 function search_company() {
     var name = document.getElementById('search_com_name').value;
+    var msg = 'Search:';
 
     console.log('===========================================');
     console.log(msg);
