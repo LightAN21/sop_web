@@ -24,8 +24,9 @@ $(document).ready(function () {
 
         for (var i = 0; i < list_info.length; i++) {
             var lst = list_info[i].company_list;
-            for (var j = 0; j < lst.length; j++){
-                lst[j] = lst[j].split('\r')[0];    // For Windows system
+            for (var j = 0; j < lst.length; j++) {
+                if (lst[j][lst[j].length - 1] == '\r')
+                    lst[j] = lst[j].split('\r')[0];    // For Windows system
             }
             list_set[list_info[i].name] = {
                 com_list: list_info[i].company_list,
@@ -169,7 +170,7 @@ function save_read_data_to_list() {
         // console.log(('A' === lst[0]));
         // console.log('test8:');
         // console.log('A'.charCodeAt(0));
-        
+
         // if (lst[1] != undefined) {
         //     console.log('test9:');
         //     console.log('lst[1]: ' + lst[1]);
@@ -195,7 +196,7 @@ function save_read_data_to_list() {
         //     console.log('end test13.');
 
         // }
-        
+
         // console.log('-----------------------------------------------------------------------');
 
         list_set[list_name].com = [];
