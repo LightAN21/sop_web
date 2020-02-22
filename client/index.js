@@ -58,6 +58,8 @@ $(document).ready(function () {
         console.log(file_list);
         console.log("file_com_list:");
         console.log(file_com_list);
+        console.log("file_com_name_set:");
+        console.log(file_com_name_set);
     });
     $('#read_data').click(function () {
         if (data_is_read) {
@@ -127,24 +129,61 @@ function read_data() {
 }
 
 function save_read_data_to_list() {
+    console.log('save_read_data_to_list');
     for (var i = 0; i < list_info.length; i++) {
         var list_name = list_info[i].name;
         var lst = list_info[i].company_list;
 
-        // list_com_set[list_name] = [];
-        // var curr_lst = list_com_set[list_name];
-        // for (var j = 0; j < lst.length; j++) {
-        //     if (lst[j] in file_com_name_set){
-        //         curr_lst.push(com_set[lst[j]]);
-        //     }
-        // }
+        console.log('!! i = ' + i + '!!');
+        console.log('lst:');
+        console.log(lst);
+        console.log('file_com_name_set:');
+        console.log(file_com_name_set);
+        console.log('test:');
+        console.log(('A' in file_com_name_set));
+        console.log('test2:');
+        console.log(file_com_name_set['A']);
+        console.log('test3:');
+        console.log(('A' == lst[0]));
+        console.log('test4:');
+        console.log(lst[0]);
+        console.log('test5:');
+        console.log(typeof(lst[0]));
+        console.log('test6:');
+        console.log(typeof('A'));
+        console.log('test7:');
+        console.log(('A' === lst[0]));
+        console.log('test8:');
+        console.log('A'.charCodeAt(0));
+
+        console.log('test9:');
+        var x = lst[0];
+        console.log(('A' == x));
+        
+
+        console.log('-----------------------------------------------------------------------');
+
         list_set[list_name].com = [];
         var curr_lst = list_set[list_name].com;
         for (var j = 0; j < lst.length; j++) {
+            console.log('lst[j]: ' + lst[j]);
+            console.log('type of' + lst[j] + ':');
+            console.log(typeof(lst[j]));
+
+            console.log('lst[j] in file_com_name_set:');
+            console.log((lst[j] in file_com_name_set));
+            console.log('file_com_name_set[lst[j]]:');
+            console.log(file_com_name_set[lst[j]]);
+
             if (lst[j] in file_com_name_set) {
+                console.log(lst[j] + 'in file_com_name_set.');
                 curr_lst.push(com_set[lst[j]]);
             }
         }
+        console.log('list_set[' + list_name + '].com:');
+        console.log(list_set[list_name].com);
+        console.log('-------------------------------------------');
+
     }
     console.log('list_set update:');
     console.log(list_set);
