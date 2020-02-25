@@ -402,3 +402,13 @@ function get_selected_com_list() {
     console.log('v: ' + v);
     return list_set[v].com;
 }
+
+function show_file_list() {
+    var list_box = document.getElementById('list_area');
+    var str =  '';
+
+    for (var i = 0; i < file_com_list.length; i++){
+        str += file_com_list[i] + '\n';
+    }
+    list_box.innerHTML = str;
+}
