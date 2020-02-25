@@ -1,12 +1,16 @@
 var list_info = [];
 var list_set = {};
 var list_com_set = {}; // lists of companiy data with data files
+
 var all_com_list = []; // main list (lists/list.csv)
+
 var com = [];
 var com_set = {};
+
 var file_list = [];
 var file_com_list = [];
 var file_com_name_set = {};
+
 var curr_company = 0;
 var data_is_read = 0;
 var reading_data_in_process = 0;
