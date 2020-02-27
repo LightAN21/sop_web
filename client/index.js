@@ -1,9 +1,10 @@
-var all_list_info;
-var list_info = [];
-var list_set = {};
-var list_com_set = {}; // lists of companiy data with data files
 
-var all_com_list = []; // main list (lists/list.csv)
+// var list_info = [];
+// var list_set = {};
+// var list_com_set = {}; // lists of companiy data with data files
+// var all_com_list = []; // main list (lists/list.csv)
+
+var all_list_info;
 
 var com = [];
 var com_set = {};
@@ -12,7 +13,7 @@ var file_list = [];
 var file_com_list = [];
 var file_com_name_set = {};
 
-var curr_company = 0;
+var curr_company = 'all';
 var data_is_read = 0;
 var reading_data_in_process = 0;
 var url_crumb = "";
@@ -26,55 +27,66 @@ $(document).ready(function () {
         all_list_info = data;
         console.log("all_list_info:");
         console.log(all_list_info);
-    });
-    $.get('/get_list_info', function (data) {
-        list_info = data;
-        console.log("list_info:");
-        console.log(list_info);
-
-        for (var i = 0; i < list_info.length; i++) {
-            var lst = list_info[i].company_list;
-            for (var j = 0; j < lst.length; j++) {
-                if (lst[j][lst[j].length - 1] == '\r')
-                    lst[j] = lst[j].split('\r')[0];    // For Windows system
-            }
-            list_set[list_info[i].name] = {
-                com_list: list_info[i].company_list,
-                com: [],
-            };
-        }
-        console.log("list_set:");
-        console.log(list_set);
 
         // add list selection
-        if (list_info.length == 0)
+        if (all_list_info.col.length == 0)
             return;
+        var select_dl_read = document.getElementById("select_list_to_download_and_read");
         var select_show = document.getElementById("select_list_to_show");
-        var select_move = document.getElementById("select_list_to_move");
-        var select_find = document.getElementById("select_list_for_filter");
-        add_list_selection(select_show, list_info, 1);
-        add_list_selection(select_move, list_info);
-        add_list_selection(select_find, list_info);
+        // var select_move = document.getElementById("select_list_to_move");
+        // var select_find = document.getElementById("select_list_for_filter");
+        add_list_selection(select_dl_read, all_list_info.col);
+        add_list_selection(select_show, all_list_info.col);
+        // add_list_selection(select_move, all_list_info.col);
+        // add_list_selection(select_find, all_list_info.col);
+        // add_file_list_to_show();
         show_list();
+
+        if (all_list_info.set != undefined) {
+            all_list_info.set['file_list'] = {
+                id: -1,
+                com_name_list: file_list,
+            };
+        }
     });
-    $.get('/get_company_name_list', function (data) {
-        all_com_list = data;
-        console.log("all_com_list(list.csv):");
-        console.log(all_com_list);
-    });
+    // $.get('/get_list_info', function (data) {
+    //     list_info = data;
+    //     console.log("list_info:");
+    //     console.log(list_info);
+
+    //     for (var i = 0; i < list_info.length; i++) {
+    //         var lst = list_info[i].company_list;
+    //         for (var j = 0; j < lst.length; j++) {
+    //             if (lst[j][lst[j].length - 1] == '\r')
+    //                 lst[j] = lst[j].split('\r')[0];    // For Windows system
+    //         }
+    //         list_set[list_info[i].name] = {
+    //             com_list: list_info[i].company_list,
+    //             com: [],
+    //         };
+    //     }
+    //     console.log("list_set:");
+    //     console.log(list_set);
+
+    // });
+    // $.get('/get_company_name_list', function (data) {
+    //     all_com_list = data;
+    //     console.log("all_com_list(list.csv):");
+    //     console.log(all_com_list);
+    // });
     $.get('/get_file_name_list', function (data) {
         file_list = data;
         for (var i = 0; i < file_list.length; i++)
             file_com_list.push(file_list[i].split('.')[0]);
         for (var i = 0; i < file_list.length; i++)
             file_com_name_set[file_com_list[i]] = i;
-        com = new Array(file_list.length);
         console.log("file_list:");
         console.log(file_list);
         console.log("file_com_list:");
         console.log(file_com_list);
         console.log("file_com_name_set:");
         console.log(file_com_name_set);
+
     });
     $('#read_data').click(function () {
         if (data_is_read) {
@@ -118,28 +130,60 @@ function read_data() {
     // com_lst_table.innerHTML = '';
     // add_button_all_com(com_lst_table);
 
-    com = [];
     var count = 0;
     reading_data_in_process = 1;
-    for (var i = 0; i < file_list.length; i++) {
-        $.post('/get_file_info', { companyID: i, file_name: file_list[i] }, function (data) {
-            com[data.id] = data;
-            com_set[data.name] = com[data.id];
-            count++;
-            progress_bar(count, file_list.length);
-            if (count >= file_list.length) {
-                // for (var i = 0; i < file_list.length; i++)
-                //     add_com_to_list(com_lst_table, com[i], i);
-                console.log('com_set:');
-                console.log(com_set);
-                save_read_data_to_list();
-                curr_company = "all";
-                document.getElementById('selected_com').innerHTML = 'all company';
-                data_is_read = 1;
-                reading_data_in_process = 0;
-                console.log('Finished.');
+    var lst_name = document.getElementById('select_list_to_download_and_read').value;
+    var lst = all_list_info.set[lst_name].com_name_list;
+    var curr_lst = [];
+    for (var i = 0; i < lst.length; i++) {
+        if (lst[i] in file_com_name_set && !(lst[i] in com_set))
+            curr_lst.push(lst[i].split('.')[0] + '.csv');
+    }
+    console.log('curr_lst:');
+    console.log(curr_lst);
+    if (curr_lst.length == 0) {
+        progress_bar_show_msg('Progress: 100% (0/0 Finished)');
+        company = "all";
+        reading_data_in_process = 0;
+        return;
+    }
+    var col = all_list_info.col;
+    for (var i = 0; i < col.length; i++) {
+        if (col[i] != '')
+            all_list_info.set[col[i]].com = [];
+    }
+    var save_com = new Array(curr_lst.length);
+
+    for (var i = 0; i < curr_lst.length; i++) {
+        $.post(
+            '/get_file_info',
+            {
+                companyID: i,
+                file_name: curr_lst[i],
+            },
+            function (data) {
+                save_com[data.id] = data;
+                com_set[data.name] = 1;
+                count++;
+                progress_bar(count, curr_lst.length);
+                if (count >= curr_lst.length) {
+                    // for (var i = 0; i < file_list.length; i++)
+                    //     add_com_to_list(com_lst_table, com[i], i);
+                    console.log('com_set:');
+                    console.log(com_set);
+                    all_list_info.set[lst_name].com = save_com;
+                    console.log('all_list_info.set[' + lst_name + '].com:');
+                    console.log(all_list_info.set[lst_name].com);
+                    // save_read_data_to_list();
+                    company = "all";
+                    // document.getElementById('selected_com').innerHTML = 'all company';
+                    // data_is_read = 1;
+                    reading_data_in_process = 0;
+                    set_curr_list(lst_name);
+                    console.log('Finished.');
+                }
             }
-        });
+        );
     }
 }
 
@@ -241,7 +285,7 @@ function progress_bar(curr, total) {
     if (curr < total)
         p.innerHTML = "Progress: " + per + "% (" + curr + "/" + total + ")";
     else
-        p.innerHTML = "Progress: 100% (Finished)";
+        p.innerHTML = 'Progress: 100% (' + total + '/' + total + ' Finished)';
 }
 
 function progress_bar_show_msg(str) {
@@ -263,8 +307,8 @@ function add_button_all_com(table) {
 
 function select_all_company() {
     curr_company = '';
-    if (!data_is_read)
-        return;
+    // if (!data_is_read)
+    //     return;
     curr_company = 'all';
     console.log('===========================================');
     progress_bar_show_msg('Select: all company');
@@ -291,24 +335,24 @@ function search_company() {
 
     console.log('===========================================');
     console.log(msg);
-    if (data_is_read == 0) {
-        msg = 'Search company: Data is not read';
-        progress_bar_show_msg(msg);
-        return;
-    }
-    for (var i = 0; i < com.length; i++) {
-        if (com[i].name.toUpperCase() == name.toUpperCase())
+    // if (data_is_read == 0) {
+    //     msg = 'Search company: Data is not read';
+    //     progress_bar_show_msg(msg);
+    //     return;
+    // }
+    for (var i = 0; i < file_com_list.length; i++) {
+        if (file_com_list[i].toUpperCase() == name.toUpperCase())
             break;
     }
-    if (i == com.length) {
+    if (i == file_com_list.length) {
         msg = 'Search: ' + name + ' not found';
         progress_bar_show_msg(msg);
     }
     else {
-        curr_company = com[i];
-        document.getElementById('selected_com').innerHTML = curr_company.name;
-        progress_bar_show_msg(com[i].name + ' is found and selected.');
-        print_company_msg(curr_company);
+        curr_company = file_com_list[i];
+        document.getElementById('selected_com').innerHTML = curr_company;
+        progress_bar_show_msg(curr_company + ' is found and selected.');
+        // print_company_msg(curr_company);
     }
 }
 
@@ -335,7 +379,7 @@ function clear_result_area() {
 }
 
 function get_chart() {
-    var com_name = curr_company.name;
+    var com_name = curr_company;
 
     if (!com_name)
         return 0;
@@ -377,48 +421,3 @@ function add_open_chart_button(res, com_name) {
     res.appendChild(document.createElement('br'));
 }
 
-// lists
-
-function add_list_selection(select_obj, list_info, show_all = 0) {
-    for (var i = 0; i < list_info.length; i++) {
-        if (list_info[i].name.split('.')[0] == 'bad_list' && show_all == 0)
-            continue;
-        var op = document.createElement('option');
-        op.value = list_info[i].name;
-        op.innerHTML = list_info[i].name;
-        if (list_info[i].name.split('.')[0] == 'list')
-            op.selected = 1;
-        select_obj.appendChild(op);
-    }
-}
-
-function show_list() {
-    var v = document.getElementById('select_list_to_show').value;
-    if (v == undefined)
-        return;
-    var lst = list_set[v].com_list;
-    var list_box = document.getElementById('list_area');
-    var str = '';
-
-    for (var i = 0; i < lst.length; i++) {
-        str += lst[i] + '\n';
-    }
-    list_box.innerHTML = str;
-}
-
-function get_selected_com_list() {
-    var v = document.getElementById('select_list_for_filter').value;
-
-    console.log('v: ' + v);
-    return list_set[v].com;
-}
-
-function show_file_list() {
-    var list_box = document.getElementById('list_area');
-    var str =  '';
-
-    for (var i = 0; i < file_com_list.length; i++){
-        str += file_com_list[i] + '\n';
-    }
-    list_box.innerHTML = str;
-}

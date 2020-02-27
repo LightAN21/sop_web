@@ -73,7 +73,10 @@ function get_file_name_list(folder_path, sep = '/') {
 }
 
 function read_file_to_obj(folder_path, filename) {
-    var rl = sync_rl(folder_path + '/' + filename, 2048);
+    var path = folder_path + '/' + filename;
+    if (!fs.existsSync(path))
+        return ;
+    var rl = sync_rl(path, 2048);
 
     var line = rl.getline();
     var new_info = {
@@ -149,6 +152,7 @@ function get_all_lists(file_path) {
             set[col[i]] = {
                 id: i,
                 com_name_list: [],
+                com: [],
             };
         }
     }

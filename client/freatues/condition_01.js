@@ -9,24 +9,22 @@ function has_c1(comp, type = document.getElementById("c1_type").value) {
 }
 
 function condition_01() {
-    if (curr_company == 'all') {
-        clear_result_area();
-        console.log('===========================================');
-        console.log('Find condition_01 in all company.');
+    clear_result_area();
+    console.log('===========================================');
+    console.log('Find condition_01 in all company.');
 
-        var list = [];
-        var type = document.getElementById("c1_type").value;
+    var list = [];
+    var type = document.getElementById("c1_type").value;
 
-        console.log("type: " + type);
-        var curr_com_lst = get_selected_com_list();
-        for (var i = 0; i < curr_com_lst.length; i++) {
-            if (has_c1(curr_com_lst[i], type))
-                list.push(curr_com_lst[i].name);
-        }
-        console.log(list);
-        update_result_area_from_list(list);
-        progress_bar_show_msg(list.length + ' companies satisfy C1');
+    console.log("type: " + type);
+    var curr_com_lst = get_selected_com_list();
+    for (var i = 0; i < curr_com_lst.length; i++) {
+        if (has_c1(curr_com_lst[i], type))
+            list.push(curr_com_lst[i].name);
     }
+    console.log(list);
+    update_result_area_from_list(list);
+    progress_bar_show_msg(list.length + ' companies satisfy C1');
 }
 
 // function add_time_frame(type) {

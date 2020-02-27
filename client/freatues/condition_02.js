@@ -7,7 +7,6 @@ function has_c2(comp) {
 }
 
 function condition_02() {
-    if (curr_company == 'all') {
         clear_result_area();
         console.log('===========================================');
         console.log('Find condition_02 in all company.');
@@ -22,5 +21,4 @@ function condition_02() {
         console.log(list);
         update_result_area_from_list(list);
         progress_bar_show_msg(list.length + ' companies satisfy C2');
-    }
 }

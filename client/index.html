@@ -29,56 +29,47 @@
 
     <div class="File_list" align="left">
       <div style="margin: 5px">
-        <h3>Lists</h3>
-        <table id="com_list"></table>
-        <select id="select_list_to_show"></select>
+        <h3 style="height: 10px">Lists</h3>
+        <!-- <table id="com_list"></table> -->
+        <select id="select_list_to_show" onchange="show_list()" ></select>
         <br>
-        <button id="show_list" onclick="show_list()">show</button>
-        <button id="show_file_list" onclick="show_file_list()">data file list</button>
-        <!-- <button id="sort_list" onclick="sort_list()">sort</button> -->
         <br>
-        <textarea id="list_area" rows="50" cols="7"></textarea>
+        <textarea id="list_area" rows="50" cols="10"></textarea>
       </div>
     </div>
 
     <div class="Stategies_list" align="left">
 
       <div style="margin: 5px">
+        <h3>Current list: 
+          <a id="curr_list">null</a>
+        </h3>
+      </div>
+      <div class="sep"></div>
+
+      <!-- <div style="margin: 5px">
         <h3>Selected:
           <a id="selected_com">null</a>
           <button id="selected_com_name" onclick="get_chart()">get chart</button>
           <button id="selected_all_com" onclick="select_all_company()">select all</button>
         </h3>
-        <p>
-          Move company to list
-          <select id="select_list_to_move"></select>
-          <button id="move_to_another_list" onclick="move_to_another_list()">move</button>
-          <br>
-          Delete the data of the company(move to bad_list)
-          <button id="delete_company" onclick="delete_company()">delete</button>
-          <br>
-          <br>
-          Add company to main list(list.csv)
-          <input id="add_com_name" style="text-align:left; width:80px;" maxlength="10" type="text" value="">
-          <button id="add_company" onclick="add_company()">add</button>
-        </p>
       </div>
-      <div class="sep"></div>
+      <div class="sep"></div> -->
 
-      <div style="margin: 5px">
+      <!-- <div style="margin: 5px">
         <h3>Search company
           <input id="search_com_name" style="text-align:left; width:100px;" maxlength="10" type="text" value="">
           <input id="submit_search" type="button" onclick="search_company()" value="Search">
         </h3>
         <p></p>
       </div>
-      <div class="sep"></div>
+      <div class="sep"></div> -->
 
       <div style="margin: 5px">
         <h3>Multiple conditions filter SOP</h3>
         <p>
-          Use the filter on the list
-          <select id="select_list_for_filter"></select>
+          Use the filter on the current list
+          <!-- <select id="select_list_for_filter"></select> -->
           <button onclick="multi_condition()">find</button>
         </p>
         <p>
@@ -296,6 +287,7 @@
 
   <script src="index.js"></script>
   <script src="key_mouse_hook.js"></script>
+  <script src="select_list.js"></script>
   <script src="download_from_url.js"></script>
 
   <script src="indicators/candles.js"></script>

@@ -1,27 +1,27 @@
-function add_all_time_frame(type) {
+function add_all_time_frame(type, comps = get_selected_com_list()) {
 
     if (type == 'M')
-        M(com);
+        M(comps);
     else if (type == 'Mx')
-        Mx(com);
+        Mx(comps);
     else if (type == 'M2')
-        Mn(com, 2);
+        Mn(comps, 2);
     else if (type == 'M2_1')
-        Mn(com, 2, 1);
+        Mn(comps, 2, 1);
     else if (type == 'M3')
-        Mn(com, 3);
+        Mn(comps, 3);
     else if (type == 'M3_1')
-        Mn(com, 3, 1);
+        Mn(comps, 3, 1);
     else if (type == 'M4')
-        Mn(com, 4);
+        Mn(comps, 4);
     else if (type == 'M4_1')
-        Mn(com, 4, 1);
+        Mn(comps, 4, 1);
     else if (type == 'M6')
-        Mn(com, 6);
+        Mn(comps, 6);
     else if (type == 'M6_1')
-        Mn(com, 6, 1);
+        Mn(comps, 6, 1);
     else if (type == 'W')
-        W(com);
+        W(comps);
 }
 
 function add_company_time_frame(com, type) {
