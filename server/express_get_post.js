@@ -49,6 +49,11 @@ function express_get_post(app, main_dir, info){
         res.send(info.list_info);
         res.end();
     });
+
+    app.get('/get_all_list_info', function (req, res){
+        res.send(info.all_list_info);
+        res.end();
+    });
 }
 
 module.exports = express_get_post;

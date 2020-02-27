@@ -23,7 +23,7 @@ function readline(path, buff_size = 128) {
                 }
                 else
                     s.index++;
-                return curr_line;
+                return curr_line.split('\r')[0];
             }
             return this.read_file();
         },

@@ -1,3 +1,4 @@
+var all_list_info;
 var list_info = [];
 var list_set = {};
 var list_com_set = {}; // lists of companiy data with data files
@@ -20,6 +21,11 @@ $(document).ready(function () {
     $.get('/get_url_crumb', function (data) {
         url_crumb = data;
         console.log("url_crumb: \"" + url_crumb + "\"");
+    });
+    $.get('/get_all_list_info', function (data) {
+        all_list_info = data;
+        console.log("all_list_info:");
+        console.log(all_list_info);
     });
     $.get('/get_list_info', function (data) {
         list_info = data;

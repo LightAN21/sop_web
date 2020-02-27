@@ -21,6 +21,7 @@
 
   <div class="outerDiv" align="center">
 
+    <select id="select_list_to_download_and_read"></select>
     <button id='read_data'>Read data</button>
     <button id="download_from_url">Download</button>
     <button id="check_data">Check data</button>
@@ -53,12 +54,13 @@
           <select id="select_list_to_move"></select>
           <button id="move_to_another_list" onclick="move_to_another_list()">move</button>
           <br>
-          Add company to main list
-          <input id="add_com_name" style="text-align:left; width:80px;" maxlength="10" type="text" value="">
-          <button id="add_company" onclick="add_company()">add</button>
-          <br>
           Delete the data of the company(move to bad_list)
           <button id="delete_company" onclick="delete_company()">delete</button>
+          <br>
+          <br>
+          Add company to main list(list.csv)
+          <input id="add_com_name" style="text-align:left; width:80px;" maxlength="10" type="text" value="">
+          <button id="add_company" onclick="add_company()">add</button>
         </p>
       </div>
       <div class="sep"></div>

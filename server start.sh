@@ -1,3 +1,3 @@
 #!/bin/bash
 # start server
-node ./app.js
+node --max-old-space-size=8192 ./app.js

@@ -45,16 +45,13 @@ messageK = {
 const fs = require("fs");
 const sync_rl = require('./sync_readline');
 
-function get_company_name_list(file_path)
-{
+function get_company_name_list(file_path) {
     var rl = sync_rl(file_path);
     var com_set = {};
     var com_list = [];
 
-    while ((line = rl.getline()) != 0)
-    {
-        if (!(line in com_set))
-        {
+    while ((line = rl.getline()) != 0) {
+        if (!(line in com_set)) {
             com_set[line] = 1;
             com_list.push(line);
         }
@@ -89,7 +86,7 @@ function read_file_to_obj(folder_path, filename) {
         var t = arr[0].split('-');
 
         if (Number(t[0]) < 2000)
-            continue ;
+            continue;
         var tmp = {
             id: new_info.day.length,
             time: arr[0],
@@ -131,12 +128,43 @@ function read_file_to_obj(folder_path, filename) {
     return new_info;
 }
 
-function get_url_curmb(file_path)
-{
+function get_url_curmb(file_path) {
     var rl = sync_rl(file_path, 2048);
     var line = rl.getline();
 
     return line;
+}
+
+function get_all_lists(file_path) {
+    var rl = sync_rl(file_path, 2048);
+    var line = rl.getline();
+    var col;
+    var num_of_lists;
+    var set = {};
+
+    col = line.split(',');
+    num_of_lists = col.length;
+    for (var i = 0; i < col.length; i++) {
+        if (col[i] != '' && col[i] != undefined) {
+            set[col[i]] = {
+                id: i,
+                com_name_list: [],
+            };
+        }
+    }
+
+    while ((line = rl.getline()) != 0) {
+        var arr = line.split(',');
+        for (var i = 0; i < num_of_lists; i++) {
+            if (arr[i] != '' && arr[i] != undefined) {
+                set[col[i]].com_name_list.push(arr[i]);
+            }
+        }
+    }
+    return {
+        col: col,
+        set: set,
+    };
 }
 
 module.exports = {
@@ -144,4 +172,5 @@ module.exports = {
     read_file_to_obj: read_file_to_obj,
     get_company_name_list: get_company_name_list,
     get_url_curmb: get_url_curmb,
+    get_all_lists: get_all_lists,
 };
