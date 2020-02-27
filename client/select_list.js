@@ -30,6 +30,12 @@ function get_selected_com_list() {
     return all_list_info.set[v].com;
 }
 
+function get_selected_com_name_list() {
+    var v = document.getElementById('select_list_to_download_and_read').value;
+
+    return all_list_info.set[v].com_name_list;
+}
+
 function show_file_list() {
     var list_box = document.getElementById('list_area');
     var str = '';
@@ -51,4 +57,24 @@ function add_file_list_to_show() {
 function set_curr_list(list_name) {
     var obj = document.getElementById('curr_list');
     obj.innerHTML = list_name;
+}
+
+function get_all_com_name_list() {
+    var res = [];
+    var set = {};
+    var col = all_list_info.col;
+    for (var i = 0; i < col.length; i++) {
+        if (col[i] != '' && col[i] != undefined) {
+            var curr_lst = all_list_info.set[col[i]].com_name_list;
+            if (curr_lst != undefined) {
+                for (var j = 0; j < curr_lst.length; j++) {
+                    if (!(curr_lst[j] in set)) {
+                        res.push(curr_lst[j]);
+                        set[curr_lst[j]] = 1;
+                    }
+                }
+            }
+        }
+    }
+    return res;
 }

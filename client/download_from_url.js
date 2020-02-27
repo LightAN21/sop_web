@@ -1,22 +1,21 @@
 
 var url_counter = 0;
 var timeoutID;
-var curr_set;
+var curr_lst_set;
 var crumb = ''; // different computer/ip will have different crumb
 
-function download_from_url() {
+function download_from_url(lst) {
     console.log('===========================================');
     console.log('Downloading latest data...');
 
     crumb = url_crumb;
-    curr_set = all_com_list;
+    curr_lst_set = lst;
     url_counter = 0;
     timeoutID = window.setInterval(download_com_data_fast, 2000);
-
 }
 
 function download_com_data() {
-    var name = curr_set[url_counter];
+    var name = curr_lst_set[url_counter];
     if (name == undefined){
         console.log('');
         console.log('Finished.');
@@ -41,7 +40,7 @@ function download_com_data() {
 }
 
 function download_com_data_fast() {
-    if (curr_set[url_counter] == undefined) {
+    if (curr_lst_set[url_counter] == undefined) {
         console.log('');
         console.log('Finished.');
         console.log('Total number of downloaded files: ' + url_counter);
@@ -53,13 +52,13 @@ function download_com_data_fast() {
     var len = 15;
 
     var counter_end = url_counter + len;
-    if (counter_end > curr_set.length){
-        counter_end = curr_set.length;
+    if (counter_end > curr_lst_set.length){
+        counter_end = curr_lst_set.length;
     }
 
     var url_list = [];
     for (var i = url_counter; i < counter_end; i++){
-        url_list.push(get_yahoo_url(curr_set[i]));
+        url_list.push(get_yahoo_url(curr_lst_set[i]));
     }
 
     for (var i = 0; i < url_list.length; i++){
@@ -78,7 +77,7 @@ function get_yahoo_url(name){
 }
 
 function test_url_counter(){
-    var name = curr_set[url_counter];
+    var name = curr_lst_set[url_counter];
     if (name == undefined){
         console.log('');
         console.log('Finished.');

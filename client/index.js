@@ -103,19 +103,39 @@ $(document).ready(function () {
         read_data();
     })
     $('#download_from_url').click(function () {
+        var lst = get_selected_com_name_list();
+
         if (url_crumb == 'null' || url_crumb == '' || url_crumb == undefined) {
             progress_bar_show_msg('Error: URL crumb not found.');
             return;
         }
-        else if (list_info.length == 0) {
-            progress_bar_show_msg('Error: Server is not running / No list files');
+        else if (lst.length == 0) {
+            progress_bar_show_msg('list length = 0.');
             return;
         }
         var str = 'Please make sure that you have a correct URL curmb.\n';
-        str += 'Do you want to download the latest data(' + all_com_list.length + ' files)?';
+        str += 'Do you want to download the latest data(' + lst.length + ' files)?';
         var r = confirm(str);
         if (r == true)
-            download_from_url();
+            download_from_url(lst);
+    })
+
+    $('#download_all_from_url').click(function () {
+        var lst = get_all_com_name_list();
+
+        if (url_crumb == 'null' || url_crumb == '' || url_crumb == undefined) {
+            progress_bar_show_msg('Error: URL crumb not found.');
+            return;
+        }
+        else if (lst.length == 0) {
+            progress_bar_show_msg('list length = 0.');
+            return;
+        }
+        var str = 'Please make sure that you have a correct URL curmb.\n';
+        str += 'Do you want to download all latest data(' + lst.length + ' files)?';
+        var r = confirm(str);
+        if (r == true)
+            download_from_url(lst);
     })
     $('#check_data').click(function () {
         console.log(com);
