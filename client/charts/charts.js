@@ -16,10 +16,11 @@ function show_chart(){
     drawArea.fillStyle = 'black';
     drawArea.fillRect(0, 0, width, height);
 
-    drawArea.fillStyle = 'gray';
+    drawArea.fillStyle = 'green';
     drawArea.fillRect(100, 200, 5, 30);
-    
     drawArea.fillRect(102, 180, 1, 80);
-
+    drawArea.fillStyle = 'red';
+    drawArea.fillRect(300, 100, 5, 30);
+    drawArea.fillRect(302, 80, 1, 80);
 
 }
