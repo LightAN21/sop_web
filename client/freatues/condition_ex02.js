@@ -19,5 +19,5 @@ function condition_ex02() {
     console.log(list);
     update_result_area_from_list(list);
     progress_bar_show_msg(list.length + ' companies satisfy ex02');
-
+    return list;
 }

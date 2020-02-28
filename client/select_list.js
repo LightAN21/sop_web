@@ -30,12 +30,16 @@ function show_list() {
 function get_selected_com_list() {
     var v = document.getElementById('select_list_to_download_and_read').value;
 
+    if (all_list_info.set[v] == undefined)
+        return ;
     return all_list_info.set[v].com;
 }
 
 function get_selected_com_name_list() {
     var v = document.getElementById('select_list_to_download_and_read').value;
 
+    if (all_list_info.set[v] == undefined)
+        return ;
     return all_list_info.set[v].com_name_list;
 }
 

@@ -12,6 +12,9 @@ var data_is_read = 0;
 var reading_data_in_process = 0;
 var url_crumb = "";
 
+var filter_list = [];
+var filter_list_index = 0;
+
 $(document).ready(function () {
     $.get('/get_url_crumb', function (data) {
         url_crumb = data;
@@ -93,12 +96,9 @@ $(document).ready(function () {
             download_from_url(lst);
     })
     $('#check_data').click(function () {
-        console.log(com);
-    })
-    $('#check_chart').click(function () {
         console.log('===========================================');
-        console.log('Switch to jtsai client.');
-        $.get('/jtsai_client');
+        console.log('all_list_info:');
+        console.log(all_list_info);
     })
 });
 
@@ -196,4 +196,22 @@ function get_chart() {
         return 0;
     console.log('curr_company: ' + com_name);
     open_chart(com_name);
+}
+
+function filter_show_list() {
+    var lst = get_selected_com_list();
+
+    console.log('===========================================');
+    console.log("Show list");
+    if (lst == undefined)
+        return ;
+    var res = [];
+
+    for (var i = 0; i < lst.length; i++){
+        res.push(lst[i].name);
+    }
+    update_result_area_from_list(res);
+    console.log(res);
+    filter_list = res;
+    return res;
 }

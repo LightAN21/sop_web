@@ -20,10 +20,15 @@
             <div style="margin: 5px">
                 <h3>Filter:</h3>
                 <p>
-                    <button onclick="condition_ex01()">Ex01: Up fractal up</button>
-                    <button onclick="condition_ex02()">Ex02: Down fractal down</button>
+                    <button onclick="filter_show_list()">All</button><br>
+                    <button onclick="condition_ex01()">Ex01: Up fractal up</button><br>
+                    <button onclick="condition_ex02()">Ex02: Down fractal down</button><br>
                 </p>
                 <textarea id="result_area" rows="25" cols="20"></textarea>
+                <br>
+                <button onclick="show_filter_chart()">show</button>
+                <button onclick="pre_filter_chart()">pre</button>
+                <button onclick="next_filter_chart()">next</button>
                 <p>
                     <a href="https://finance.yahoo.com/quote/AAPL/history?p=AAPL" target="_blank">URL crumb</a>
                 </p>
@@ -35,7 +40,7 @@
             <div style="margin: 5px">
                 <h3>Show chart
                     <input type="text" id="chart_com_name" maxlength="10">
-                    <button onclick="show_chart()">show</button>
+                    <button onclick="show_chart()">submit</button>
                 </h3>
                 <canvas id="canvas1" width="550" height="450"></canvas>
             </div>
