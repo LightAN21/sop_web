@@ -1,0 +1,50 @@
+body {
+    background-color: #555555;
+}
+
+.outerDiv {
+    color: #fff;
+    height: 100%;
+    width: 800px;
+    margin: 0px auto;
+}
+
+.Filter {
+    background-color: #EEE8AA;
+    color: #000;
+    height: 100%;
+    width: 23%;
+    float: left;
+    border: 5px solid #555555;
+}
+
+.Chart_area {
+    background-color: #EEE8AA;
+    color: #000;
+    height: 500px;
+    width: 73%;
+    float: left;
+    border: 5px solid #555555;
+}
+
+.Result_list {
+    background-color: #EEE8AA;
+    color: #000;
+    height: 100%;
+    width: 26%;
+    float: left;
+    border: 5px solid #555555;
+}
+
+.sep {
+    background-color: #555555;
+    height: 10px;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3, h4 {
+    font-family: Arial, Helvetica, sans-serif;
+}

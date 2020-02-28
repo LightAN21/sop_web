@@ -16,15 +16,10 @@ var info = {
 
 const read_data = require('../server/read_data');
 
-function express_get_post(app, main_dir, info){
+function express_get_post(app, main_dir, info) {
     app.get('/', function (req, res) {
         res.sendFile('./client/index.html', { root: main_dir });
     });
-
-    // app.get('/get_company_name_list', function (req, res) {
-    //     res.send(info.company_name_list);
-    //     res.end();
-    // });
 
     app.get('/get_file_name_list', function (req, res) {
         res.send(info.file_name_list);
@@ -46,14 +41,19 @@ function express_get_post(app, main_dir, info){
         res.end();
     });
 
-    app.get('/get_list_info', function (req, res){
+    app.get('/get_list_info', function (req, res) {
         res.send(info.list_info);
         res.end();
     });
 
-    app.get('/get_all_list_info', function (req, res){
+    app.get('/get_all_list_info', function (req, res) {
         res.send(info.all_list_info);
         res.end();
+    });
+
+    // jtsai client
+    app.get('/jtsai_client', function (req, res) {
+        res.sendFile('./client/jtsai_index.html', { root: main_dir });
     });
 }
 

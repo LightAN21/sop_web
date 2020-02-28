@@ -11,7 +11,10 @@ function add_list_selection(select_obj, lst) {
 }
 
 function show_list() {
-    var v = document.getElementById('select_list_to_show').value;
+    var n = document.getElementById('select_list_to_show');
+    if (n == undefined)
+        return;
+    var v = n.value;
     if (v == undefined)
         return;
     var lst = all_list_info.set[v].com_name_list;
@@ -56,7 +59,8 @@ function add_file_list_to_show() {
 
 function set_curr_list(list_name) {
     var obj = document.getElementById('curr_list');
-    obj.innerHTML = list_name;
+    if (obj != undefined)
+        obj.innerHTML = list_name;
 }
 
 function get_all_com_name_list() {

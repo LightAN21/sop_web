@@ -1,0 +1,65 @@
+<!doctype html>
+
+<head>
+    <title>sop_program</title>
+    <link href="jtsai_index.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body bgcolor="orange">
+
+    <div class="outerDiv" align="center">
+
+        <select id="select_list_to_download_and_read"></select>
+        <button id='read_data'>Read data</button>
+        <button id="download_from_url">Download</button>
+        <button id="download_all_from_url">Download All</button>
+        <button id="check_data">Check data</button>
+        <p id="progress" style="height: 15px;">Welcome to jtsai client.</p>
+
+        <div class="Filter" align="left">
+            <div style="margin: 5px">
+                <h3>Filter:</h3>
+                <p>
+                    <button onclick="condition_ex01()">Ex01: Up fractal up</button>
+                    <button onclick="condition_ex02()">Ex02: Down fractal down</button>
+                </p>
+                <textarea id="result_area" rows="25" cols="20"></textarea>
+                <p>
+                    URL crumb: <a href="https://finance.yahoo.com/quote/AAPL/history?p=AAPL" target="_blank">company</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="Chart_area" align="left">
+
+            <div style="margin: 5px">
+                <h3>Show chart
+                    <input type="text" id="chart_com_name" maxlength="10">
+                    <button onclick="show_chart()">show</button>
+                </h3>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+
+    <script src="jtsai_index.js"></script>
+    <script src="select_list.js"></script>
+    <script src="download_from_url.js"></script>
+    <script src="charts/charts.js"></script>
+
+    <script src="indicators/candles.js"></script>
+    <script src="indicators/candle_compare.js"></script>
+    <script src="indicators/fractal.js"></script>
+    <script src="indicators/period_compare.js"></script>
+    <script src="indicators/tramsform_data.js"></script>
+    <script src="indicators/trend.js"></script>
+    <script src="indicators/volume.js"></script>
+
+    <script src="freatues/condition_ex01.js"></script>
+    <script src="freatues/condition_ex02.js"></script>
+
+</body>

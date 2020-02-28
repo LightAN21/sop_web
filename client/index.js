@@ -140,6 +140,11 @@ $(document).ready(function () {
     $('#check_data').click(function () {
         console.log(com);
     })
+    $('#check_chart').click(function () {
+        console.log('===========================================');
+        console.log('Switch to jtsai client.');
+        $.get('/jtsai_client');
+    })
 });
 
 function read_data() {
