@@ -1,7 +1,7 @@
 
 function has_ex03(comp, range = 20, ratio = 0.6) {
     var msg = comp.day;
-    var arr = [], tmp = [];
+    var arr = [];
     var max = 0, curr = 0;
 
     for (var i = 0; i < range; i++) {
