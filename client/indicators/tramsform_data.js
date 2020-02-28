@@ -1,27 +1,56 @@
-function add_all_time_frame(type, comps = get_selected_com_list()) {
+function get_real_type(comp, web_type) {
+    if (web_type[0] != 'M' || web_type == 'Mx' || web_type == 'M')
+        return web_type;
+    var real_shift = get_real_shift(comp, web_type);
+    if (real_shift == 0)
+        return web_type.split('_')[0];
+    else
+        return web_type.split('_')[0] + '_' + real_shift;
+}
 
+function get_real_shift(comp, web_type) {
+    var d = comp.day;
+    var t = d[0].time;
+    var month = parseInt(t.split('-')[1]);
+    var web_m = parseInt(web_type.split('M')[1]);
+
+    if (web_type.split('_').length == 1)
+        return shift_to_start_at_Jan(month, web_m) % web_m;
+    else if (web_type.split('_')[1] == 'shift')
+        return (shift_to_start_at_Jan(month, web_m) + (2 * web_m - 1)) % web_m;
+}
+
+function get_month_number(comps) {
+    var c = comps[0];
+    var d = c.day;
+    var t = d[0].time;
+    var m = parseInt(t.split('-')[1]);
+
+    console.log('Current date: ' + t);
+    console.log('Current month: ' + m);
+    return m;
+}
+
+function shift_to_start_at_Jan(month, n) {
+    return month % n;
+}
+
+function add_all_time_frame(type, comps = get_selected_com_list()) {
+    // console.log('Add type on all company: ' + type);
     if (type == 'M')
         M(comps);
     else if (type == 'Mx')
         Mx(comps);
-    else if (type == 'M2')
-        Mn(comps, 2);
-    else if (type == 'M2_1')
-        Mn(comps, 2, 1);
-    else if (type == 'M3')
-        Mn(comps, 3);
-    else if (type == 'M3_1')
-        Mn(comps, 3, 1);
-    else if (type == 'M4')
-        Mn(comps, 4);
-    else if (type == 'M4_1')
-        Mn(comps, 4, 1);
-    else if (type == 'M6')
-        Mn(comps, 6);
-    else if (type == 'M6_1')
-        Mn(comps, 6, 1);
     else if (type == 'W')
         W(comps);
+    else if (type[0] == 'M') {
+        var n = parseInt(type.split('M')[1]);
+        var shift = parseInt(type.split('_')[1]);
+
+        // console.log('n = ' + n);
+        // console.log('shift = ' + shift);
+        Mn(comps, n, shift);
+    }
 }
 
 function add_company_time_frame(com, type) {
@@ -32,26 +61,22 @@ function add_company_time_frame(com, type) {
         Mx_com(com);
     else if (type == 'M2')
         Mn_com(com, 2);
-    else if (type == 'M2_1')
+    else if (type == 'M2_shift')
         Mn_com(com, 2, 1);
     else if (type == 'M3')
         Mn_com(com, 3);
-    else if (type == 'M3_1')
+    else if (type == 'M3_shift')
         Mn_com(com, 3, 1);
     else if (type == 'M4')
         Mn_com(com, 4);
-    else if (type == 'M4_1')
+    else if (type == 'M4_shift')
         Mn_com(com, 4, 1);
     else if (type == 'M6')
         Mn_com(com, 6);
-    else if (type == 'M6_1')
+    else if (type == 'M6_shift')
         Mn_com(com, 6, 1);
     else if (type == 'W')
         W_com(com);
-}
-
-function shift_to_start_at_Jan(month, n) {
-    return month % n;
 }
 
 function find_start_day(day, curr_index, start_weekday) {
@@ -70,7 +95,7 @@ function find_start_day(day, curr_index, start_weekday) {
     for (var i = curr_index + 4; i > curr_index; i--) {
         if (day[i].weekday < pre)
             shift = 7;
-        if (day[i].weekday + shift >= start_weekday){
+        if (day[i].weekday + shift >= start_weekday) {
             // console.log('curr_index: ' + curr_index + ', time: ' + day[curr_index].time);
             // console.log('find index: ' + i + ', time: ' + day[i].time);
             return i;
@@ -255,8 +280,9 @@ function Mn_com(com, n = 1, shift = 0) {
 
     if (n < 1)
         n = 1;
-    if (shift > 0) {
-        type += '_' + shift.toString();
+    if (shift % n > 0) {
+        if (shift % n > 0)
+            type += '_' + (shift % n).toString();
         end = i;
         var start_0 = end - 1;
         for (shift = shift % n; shift > 0; shift--) {
@@ -285,7 +311,7 @@ function Mn(info, n = 1, shift = 0) {
         Mn_com(info[i], n, shift);
     }
 }
-// usage: Mn(info);
+// usage: Mn(info, 3);
 
 // example: info[0]['M3']
 
@@ -297,7 +323,7 @@ function Mn(info, n = 1, shift = 0) {
 
 function find_first_x_weekday_of_month(day, curr_index, x = 3, weekday = 5) {
     var list = [], tmp = curr_index - 1;
-    if (x >= 4 || x < 1){
+    if (x >= 4 || x < 1) {
         x = (x >= 4) ? 4 : 1;
     }
     var y = x - 1;
@@ -318,23 +344,23 @@ function find_first_x_weekday_of_month(day, curr_index, x = 3, weekday = 5) {
     // console.log('');
 
     var k = 0;
-    if (day[list[0]].month == day[curr_index].month){
-        while (k < list.length && day[list[k]].month == day[curr_index].month){
+    if (day[list[0]].month == day[curr_index].month) {
+        while (k < list.length && day[list[k]].month == day[curr_index].month) {
             k++;
         }
         // console.log('k index: ' + k + ', time: ' + day[list[k]].time);
-        if (k == list.length){
+        if (k == list.length) {
             return list[k - 1];
         }
-        if (k >= x){
+        if (k >= x) {
             return list[k - x];
         }
     }
     var k2 = k;
-    while (k2 < list.length && day[list[k2]].month == day[list[k]].month){
+    while (k2 < list.length && day[list[k2]].month == day[list[k]].month) {
         k2++;
     }
-    if (k2 - k >= 4){
+    if (k2 - k >= 4) {
         return list[k2 - x];
     }
     return list[k];
@@ -390,8 +416,9 @@ function Mxn_com(com, n = 1, shift = 0, x = 3, weekday = 5) {
 
     if (n < 1)
         n = 1;
-    if (shift > 0) {
-        type += '_' + shift.toString();
+    if (shift % n > 0) {
+        if (shift % n > 0)
+            type += '_' + (shift % n).toString();
         end = i;
         var start_0 = end - 1;
         for (shift = shift % n; shift > 0; shift--) {

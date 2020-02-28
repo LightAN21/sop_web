@@ -1,4 +1,5 @@
 function has_c7(comp, type = document.getElementById("c7_type").value) {
+    type = get_real_type(comp, type);
     if (comp[type] == undefined)
         add_all_time_frame(type);
 

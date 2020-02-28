@@ -138,7 +138,9 @@ $(document).ready(function () {
             download_from_url(lst);
     })
     $('#check_data').click(function () {
-        console.log(com);
+        console.log('===========================================');
+        console.log('Current data:');
+        console.log(all_list_info.set);
     })
     $('#check_chart').click(function () {
         console.log('===========================================');
@@ -206,6 +208,7 @@ function read_data() {
                     reading_data_in_process = 0;
                     set_curr_list(lst_name);
                     console.log('Finished.');
+                    get_month_number(all_list_info.set[lst_name].com);
                 }
             }
         );
@@ -228,77 +231,13 @@ function save_read_data_to_list() {
         var list_name = list_info[i].name;
         var lst = list_info[i].company_list;
 
-        // console.log('!! i = ' + i + '!!');
-        // console.log('lst:');
-        // console.log(lst);
-        // console.log('file_com_name_set:');
-        // console.log(file_com_name_set);
-        // console.log('test:');
-        // console.log(('A' in file_com_name_set));
-        // console.log('test2:');
-        // console.log(file_com_name_set['A']);
-        // console.log('test3:');
-        // console.log(('A' == lst[0]));
-        // console.log('test4:');
-        // console.log(lst[0]);
-        // console.log('test5:');
-        // console.log(typeof (lst[0]));
-        // console.log('test6:');
-        // console.log(typeof ('A'));
-        // console.log('test7:');
-        // console.log(('A' === lst[0]));
-        // console.log('test8:');
-        // console.log('A'.charCodeAt(0));
-
-        // if (lst[1] != undefined) {
-        //     console.log('test9:');
-        //     console.log('lst[1]: ' + lst[1]);
-        //     var x = lst[1];
-        //     console.log('x[0]: ' + x[0]);
-        //     console.log(('AAL' == x[0]));
-
-
-        //     console.log('test10:');
-        //     console.log(str_cmp('AAL', lst[1]));
-
-        //     console.log('test11:');
-        //     console.log('AAL'.length);
-        //     console.log(lst[1].length);
-
-        //     console.log('test12:');
-        //     var s = 'AAL';
-        //     console.log(s[3]);
-
-        //     console.log('test13:');
-        //     for (var i = 0; i < lst[1].length; i++)
-        //         console.log(lst[1].charCodeAt(i));
-        //     console.log('end test13.');
-
-        // }
-
-        // console.log('-----------------------------------------------------------------------');
-
         list_set[list_name].com = [];
         var curr_lst = list_set[list_name].com;
         for (var j = 0; j < lst.length; j++) {
-            // console.log('lst[j]: ' + lst[j]);
-            // console.log('type of' + lst[j] + ':');
-            // console.log(typeof (lst[j]));
-
-            // console.log('lst[j] in file_com_name_set:');
-            // console.log((lst[j] in file_com_name_set));
-            // console.log('file_com_name_set[lst[j]]:');
-            // console.log(file_com_name_set[lst[j]]);
-
             if (lst[j] in file_com_name_set) {
-                // console.log(lst[j] + 'in file_com_name_set.');
                 curr_lst.push(com_set[lst[j]]);
             }
         }
-        // console.log('list_set[' + list_name + '].com:');
-        // console.log(list_set[list_name].com);
-        // console.log('-------------------------------------------');
-
     }
     console.log('list_set update:');
     console.log(list_set);
