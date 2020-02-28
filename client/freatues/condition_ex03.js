@@ -1,5 +1,5 @@
 
-function has_ex03(comp, range = 20, ratio = 0.6) {
+function has_ex03(comp, range = 20, ratio = 0.5) {
     var msg = comp.day;
     var arr = [];
     var max = 0, curr = 0;

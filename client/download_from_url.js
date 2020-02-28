@@ -29,7 +29,8 @@ function download_com_data() {
     console.log('download: ' + name);
 
     var url_0 = "https://query1.finance.yahoo.com/v7/finance/download/" + name;
-    var url_1 = "?period1=-252345600&period2=9999999999";
+    // var url_1 = "?period1=-252345600&period2=9999999999";
+    var url_1 = "?period1=1514851200&period2=9999999999";
     var url_2 = "&interval=1d&events=history&crumb=" + crumb;
     
     var link = document.createElement('a');
@@ -70,7 +71,8 @@ function download_com_data_fast() {
 
 function get_yahoo_url(name){
     var url_0 = "https://query1.finance.yahoo.com/v7/finance/download/" + name;
-    var url_1 = "?period1=-252345600&period2=9999999999";
+    // var url_1 = "?period1=-252345600&period2=9999999999";
+    var url_1 = "?period1=1514851200&period2=9999999999";
     var url_2 = "&interval=1d&events=history&crumb=" + crumb;
 
     return url_0 + url_1 + url_2;

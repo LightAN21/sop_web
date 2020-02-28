@@ -151,6 +151,7 @@ function read_data() {
                     console.log(all_list_info.set[lst_name].com);
                     company = "all";
                     reading_data_in_process = 0;
+                    filter_list_index = 0;
                     console.log('Finished.');
                 }
             }

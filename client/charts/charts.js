@@ -17,9 +17,10 @@ function get_chart_com_msg(name) {
 }
 
 function show_com_chart(name) {
+    console.log('===========================================');
+
     var msg = get_chart_com_msg(name);
     
-    console.log('===========================================');
     if (msg == undefined) {
         progress_bar_show_msg('Message of \"' + name.toUpperCase() + '\" not found');
         return;
@@ -64,6 +65,7 @@ function show_filter_chart() {
     if (filter_list.length == 0)
         return ;
     console.log('Show chart');
+    filter_list_index = 0;
     show_com_chart(filter_list[filter_list_index]);
 }
 
