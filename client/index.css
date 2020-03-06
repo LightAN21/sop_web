@@ -5,7 +5,7 @@ body {
 .outerDiv {
     color: #fff;
     height: 100%;
-    width: 800px;
+    width: 1600px;
     margin: 0px auto;
 }
 
@@ -13,7 +13,7 @@ body {
     background-color: #EEE8AA;
     color: #000;
     height: 100%;
-    width: 23%;
+    width: 12%;
     float: left;
     border: 5px solid #555555;
 }
@@ -22,7 +22,7 @@ body {
     background-color: #EEE8AA;
     color: #000;
     height: 100%;
-    width: 47%;
+    width: 23%;
     float: left;
     border: 5px solid #555555;
 }
@@ -31,7 +31,16 @@ body {
     background-color: #EEE8AA;
     color: #000;
     height: 100%;
-    width: 26%;
+    width: 13%;
+    float: left;
+    border: 5px solid #555555;
+}
+
+.Chart_area {
+    background-color: #EEE8AA;
+    color: #000;
+    height: 100%;
+    width: 45%;
     float: left;
     border: 5px solid #555555;
 }

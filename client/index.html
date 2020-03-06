@@ -32,7 +32,7 @@
       <div style="margin: 5px">
         <h3 style="height: 10px">Lists</h3>
         <!-- <table id="com_list"></table> -->
-        <select id="select_list_to_show" onchange="show_list()" ></select>
+        <select id="select_list_to_show" onchange="show_list()"></select>
         <br>
         <br>
         <textarea id="list_area" rows="50" cols="10"></textarea>
@@ -42,7 +42,7 @@
     <div class="Stategies_list" align="left">
 
       <div style="margin: 5px">
-        <h3>Current list: 
+        <h3>Current list:
           <a id="curr_list">null</a>
         </h3>
       </div>
@@ -255,7 +255,7 @@
       </div>
       <div class="sep"></div>
 
-      <!-- <div style="margin: 5px">
+      <div style="margin: 5px">
         <h4>Default settings:</h4>
         <p>
           C2: 2 times of average of 10 days<br>
@@ -263,7 +263,7 @@
           C4: 2 times of average height of 10 days<br>
         </p>
       </div>
-      <div class="sep"></div> -->
+      <div class="sep"></div>
 
       <div style="margin: 5px">
         <h4>How to get a URL crumb?</h4>
@@ -288,6 +288,19 @@
       </div>
       <p style="height: 0px"></p>
       <div id="result"></div>
+    </div>
+
+    <div class="Chart_area" align="left">
+      <div style="margin: 5px">
+        <h3>Chart <a id="chart_name"></a></h3>
+        <div style="height: 500px; width: 700px; background-color: gray">
+          <canvas id="canvas1" width="550" height="450"></canvas>
+        </div>
+        <p></p>
+        <div style="height: 500px; width: 700px; background-color: gray">
+          <canvas id="canvas2" width="550" height="450"></canvas>
+        </div>
+      </div>
     </div>
 
   </div>
