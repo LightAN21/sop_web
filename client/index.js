@@ -183,7 +183,8 @@ function read_data() {
             all_list_info.set[col[i]].com = [];
     }
     var save_com = new Array(curr_lst.length);
-
+    
+    clear_result_area();
     for (var i = 0; i < curr_lst.length; i++) {
         $.post(
             '/get_file_info',
