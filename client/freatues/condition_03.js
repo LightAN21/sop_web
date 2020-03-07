@@ -27,6 +27,7 @@ function condition_03_1() {
     console.log(list);
     update_result_area_from_list(list);
     progress_bar_show_msg(list.length + ' companies satisfy C3_1');
+    filter_list = list;
 }
 
 function condition_03_2() {
@@ -43,4 +44,5 @@ function condition_03_2() {
     console.log(list);
     update_result_area_from_list(list);
     progress_bar_show_msg(list.length + ' companies satisfy C3_2');
+    filter_list = list;
 }

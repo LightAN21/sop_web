@@ -37,12 +37,12 @@ function shift_to_start_at_Jan(month, n) {
 
 function add_all_time_frame(type, comps = get_selected_com_list()) {
     // console.log('Add type on all company: ' + type);
-    if (type == 'M')
+    if (type == 'W')
+        W(comps);
+    else if (type == 'M')
         M(comps);
     else if (type == 'Mx')
         Mx(comps);
-    else if (type == 'W')
-        W(comps);
     else if (type[0] == 'M') {
         var n = parseInt(type.split('M')[1]);
         var shift = parseInt(type.split('_')[1]);

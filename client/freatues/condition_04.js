@@ -21,4 +21,5 @@ function condition_04() {
     console.log(list);
     update_result_area_from_list(list);
     progress_bar_show_msg(list.length + ' companies satisfy C4');
+    filter_list = list;
 }

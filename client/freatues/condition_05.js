@@ -27,4 +27,5 @@ function condition_05() {
     console.log(list);
     update_result_area_from_list(list);
     progress_bar_show_msg(list.length + ' companies satisfy C5');
+    filter_list = list;
 }

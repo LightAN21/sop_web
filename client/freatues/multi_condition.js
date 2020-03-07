@@ -43,12 +43,14 @@ function multi_condition() {
             return 1;
     });
     console.log(list);
+    filter_list = [];
 
     var res = '';
     for (var i = 0; i < list.length; i++) {
         res += list[i].name + '(';
         res += list[i].with_c.toString();
         res += ')\n';
+        filter_list.push(list[i].name);
     }
     update_result_area(res);
 

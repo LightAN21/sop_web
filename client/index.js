@@ -18,6 +18,9 @@ var data_is_read = 0;
 var reading_data_in_process = 0;
 var url_crumb = "";
 
+var filter_list = [];
+var filter_list_index = 0;
+
 $(document).ready(function () {
     $.get('/get_url_crumb', function (data) {
         url_crumb = data;
@@ -338,7 +341,7 @@ function update_result_area_from_list(list) {
 
 function clear_result_area() {
     document.getElementById("result_area").innerHTML = "";
-    document.getElementById("result").innerHTML = "";
+    // document.getElementById("result").innerHTML = "";
     progress_bar_show_msg('');
 }
 
