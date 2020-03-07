@@ -118,6 +118,7 @@ function transform_data(msg, start_index, end_index, count, type) {
         days: start_index - end_index + 1,
         open: msg[start_index].open,
         close: msg[end_index].close,
+        body_height: (msg[start_index].open > msg[end_index].close) ? msg[start_index].open - msg[end_index].close : msg[start_index].close - msg[end_index].open,
     };
     var max = 0;
     var min = 1000000;
